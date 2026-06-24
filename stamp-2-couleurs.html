@@ -86,13 +86,13 @@
     font-weight: 600;
   }
 
-/* ── Generator (Espaces symétriques & Bouton Next corrigé) ── */
+/* ── Generator ── */
 .gen-container {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  margin: 110px auto 110px; /* Distances identiques haut et bas */
+  margin: 110px auto 110px;
   width: 68px;
   height: 68px;
 }
@@ -117,7 +117,7 @@
 }
 .next-btn {
   position: absolute;
-  left: 90px; /* Rapproché près du rond */
+  left: 90px;
   background: #fff;
   border: 1.5px solid #ddd;
   color: #aaa;
@@ -147,8 +147,8 @@
 
 <!-- ── Random generator ── -->
 <div class="gen-container">
-  <button class="gen-circle" id="gen-circle" onclick="playGenAudio()">▶</button>
-  <button class="next-btn" onclick="nextColor()" title="Couleur suivante">›</button>
+  <button class="gen-circle" id="gen-circle" onclick="window.playGenAudio()">▶</button>
+  <button class="next-btn" onclick="window.nextColor()" title="Couleur suivante">›</button>
 </div>
 
 <!-- ── Color list ── -->
@@ -271,7 +271,6 @@
 <audio id="gen-audio-player"></audio>
 
 <script>
-  // Tableau de configuration stricte reprenant exactement le nom de vos fichiers m4a d'origine
   const COLORS = [
     { name: "jaune",        hex: "#FFD700", audio: "jaune.m4a" },
     { name: "jaune-citron", hex: "#E8E84A", audio: "jaune-citron.m4a" },
@@ -293,8 +292,8 @@
   let currentGenColor = null;
   let brunToggle = 0;
 
-  // Fonction Next rectifiée et nettoyée de toute erreur de variable
-  function nextColor() {
+  // Fonctions attachées globalement à window pour une sécurité totale
+  window.nextColor = function() {
     let randomIndex;
     do {
       randomIndex = Math.floor(Math.random() * COLORS.length);
@@ -304,3 +303,5 @@
 
     const circle = document.getElementById('gen-circle');
     if (circle) {
+      circle.style.backgroundColor = currentGenColor.hex;
+      // Correction de la variable ici : currentGenColor.hex partout
