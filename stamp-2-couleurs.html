@@ -10,10 +10,9 @@
     font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
     background: #faf9f7;
     color: #2b2b2b;
-    margin: 0;
+    margin: 0 auto;
     padding: 24px 16px 60px;
     max-width: 600px;
-    margin: 0 auto;
   }
   h1 {
     font-size: 1.4em;
@@ -24,148 +23,208 @@
     text-align: center;
     color: #777;
     font-size: 0.9em;
-    margin-bottom: 28px;
+    margin-bottom: 0; /* Nettoyage de la marge sous le titre pour maîtriser la symétrie */
   }
-  .row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: #fff;
-    border-radius: 14px;
-    padding: 12px 16px;
-    margin-bottom: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-  }
-  .swatch {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    border: 1px solid rgba(0,0,0,0.15);
-  }
-  .words {
-    flex: 1;
-    line-height: 1.3;
-  }
-  .fr {
-    font-weight: 600;
-    font-size: 1.05em;
-  }
-  .th {
-    color: #555;
-    font-size: 1em;
-  }
-  .play-btn {
-    background: #4a7c59;
-    color: #fff;
-    border: none;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    font-size: 1.1em;
-    flex-shrink: 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .play-btn:active {
-    background: #38613f;
-  }
-  .double-play {
-    display: flex;
-    gap: 8px;
-    flex-shrink: 0;
-  }
-  .double-word {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .double-word span {
-    font-weight: 600;
-  }
+
+/* ── Generator (Marges Équilibrées et Symétriques) ── */
+.gen-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 110px auto 110px; /* SYMÉTRIE PARFAITE : 110px au-dessus et 110px en-dessous */
+  width: 68px;
+  height: 68px;
+}
+.gen-circle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,0.12);
+  flex-shrink: 0;
+  cursor: pointer;
+  font-size: 1.15em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  background: #e0e0e0;
+  color: rgba(0,0,0,0.3);
+}
+.gen-circle:active {
+  transform: scale(0.91);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+.next-btn {
+  position: absolute;
+  left: 90px;
+  background: #fff;
+  border: 1.5px solid #ddd;
+  color: #aaa;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, transform 0.1s;
+  font-size: 1.4em;
+  padding: 0 0 2px 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.next-btn:active { 
+  transform: scale(0.91); 
+  border-color: #bbb;
+  color: #888;
+}
+
+/* ── Color list rows ── */
+.row {
+display: flex;
+align-items: center;
+gap: 12px;
+background: #fff;
+border-radius: 14px;
+padding: 12px 16px;
+margin-bottom: 10px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.swatch {
+width: 28px;
+height: 28px;
+border-radius: 50%;
+flex-shrink: 0;
+border: 1px solid rgba(0,0,0,0.15);
+}
+.words {
+flex: 1;
+line-height: 1.3;
+}
+.fr {
+font-weight: 600;
+font-size: 1.05em;
+}
+.th {
+color: #555;
+font-size: 1em;
+}
+.play-btn {
+background: #4a7c59;
+color: #fff;
+border: none;
+width: 42px;
+height: 42px;
+border-radius: 50%;
+font-size: 1.1em;
+flex-shrink: 0;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.play-btn:active { background: #38613f; }
+.double-play {
+display: flex;
+gap: 8px;
+flex-shrink: 0;
+}
+.double-word {
+display: flex;
+align-items: center;
+gap: 6px;
+}
+.double-word span { font-weight: 600; }
 </style>
+
 </head>
 <body>
 
 <h1>Les couleurs 🎨</h1>
 <p class="subtitle">Leçon 2 — Jeudi 11 Juin 2026 — Fruitable</p>
 
+<!-- ── Random generator ── -->
+<div class="gen-container">
+  <button class="gen-circle" id="gen-circle" onclick="playGenAudio()">▶</button>
+  <button class="next-btn" onclick="nextColor()" title="Couleur suivante">›</button>
+</div>
+
+<!-- ── Color list ── -->
+
 <div class="row">
   <div class="swatch" style="background:#FFD700;"></div>
   <div class="words"><span class="fr">Jaune</span><br><span class="th">สีเหลือง</span></div>
-  <button class="play-btn" onclick="document.getElementById('a-jaune').play()">▶</button>
+  <button class="play-btn" onclick="play('a-jaune')">▶</button>
   <audio id="a-jaune" src="jaune.m4a"></audio>
 </div>
 
 <div class="row">
   <div class="swatch" style="background:#E8E84A;"></div>
   <div class="words"><span class="fr">Jaune citron</span><br><span class="th">สีเหลืองมะนาว</span></div>
-  <button class="play-btn" onclick="document.getElementById('a-jaune-citron').play()">▶</button>
+  <button class="play-btn" onclick="play('a-jaune-citron')">▶</button>
   <audio id="a-jaune-citron" src="jaune-citron.m4a"></audio>
 </div>
 
 <div class="row">
   <div class="swatch" style="background:#FF8C00;"></div>
   <div class="words"><span class="fr">Orange</span><br><span class="th">สีส้ม</span></div>
-  <button class="play-btn" onclick="document.getElementById('a-orange').play()">▶</button>
+  <button class="play-btn" onclick="play('a-orange')">▶</button>
   <audio id="a-orange" src="orange.m4a"></audio>
 </div>
 
 <div class="row">
   <div class="swatch" style="background:#FF9EC4;"></div>
   <div class="words"><span class="fr">Rose</span><br><span class="th">สีชมพู</span></div>
-  <button class="play-btn" onclick="document.getElementById('a-rose').play()">▶</button>
+  <button class="play-btn" onclick="play('a-rose')">▶</button>
   <audio id="a-rose" src="rose.m4a"></audio>
 </div>
 
 <div class="row">
   <div class="swatch" style="background:#E53935;"></div>
   <div class="words"><span class="fr">Rouge</span><br><span class="th">สีแดง</span></div>
-  <button class="play-btn" onclick="document.getElementById('a-rouge').play()">▶</button>
+  <button class="play-btn" onclick="play('a-rouge')">▶</button>
   <audio id="a-rouge" src="rouge.m4a"></audio>
 </div>
 
 <div class="row">
   <div class="swatch" style="background:#8E24AA;"></div>
   <div class="words"><span class="fr">Violet</span><br><span class="th">สีม่วง</span></div>
-  <button class="play-btn" onclick="document.getElementById('a-violet').play()">▶</button>
+  <button class="play-btn" onclick="play('a-violet')">▶</button>
   <audio id="a-violet" src="violet.m4a"></audio>
 </div>
 
 <div class="row">
   <div class="swatch" style="background:#C39BD3;"></div>
   <div class="words"><span class="fr">Mauve</span><br><span class="th">สีม่วงอ่อน</span></div>
-  <button class="play-btn" onclick="document.getElementById('a-mauve').play()">▶</button>
+  <button class="play-btn" onclick="play('a-mauve')">▶</button>
   <audio id="a-mauve" src="mauve.m4a"></audio>
 </div>
 
 <div class="row">
   <div class="swatch" style="background:#1E3A8A;"></div>
   <div class="words"><span class="fr">Bleu</span><br><span class="th">สีน้ำเงิน</span></div>
-  <button class="play-btn" onclick="document.getElementById('a-bleu').play()">▶</button>
+  <button class="play-btn" onclick="play('a-bleu')">▶</button>
   <audio id="a-bleu" src="bleu.m4a"></audio>
 </div>
 
 <div class="row">
   <div class="swatch" style="background:#56C2E0;"></div>
   <div class="words"><span class="fr">Bleu ciel</span><br><span class="th">สีฟ้า</span></div>
-  <button class="play-btn" onclick="document.getElementById('a-bleu-ciel').play()">▶</button>
+  <button class="play-btn" onclick="play('a-bleu-ciel')">▶</button>
   <audio id="a-bleu-ciel" src="bleu-ciel.m4a"></audio>
 </div>
 
 <div class="row">
   <div class="swatch" style="background:#2E7D32;"></div>
   <div class="words"><span class="fr">Vert</span><br><span class="th">สีเขียว</span></div>
-  <button class="play-btn" onclick="document.getElementById('a-vert').play()">▶</button>
+  <button class="play-btn" onclick="play('a-vert')">▶</button>
   <audio id="a-vert" src="vert.m4a"></audio>
 </div>
 
 <div class="row">
   <div class="swatch" style="background:#8BC34A;"></div>
   <div class="words"><span class="fr">Vert pomme</span><br><span class="th">สีเขียวแอปเปิล</span></div>
-  <button class="play-btn" onclick="document.getElementById('a-vert-pomme').play()">▶</button>
+  <button class="play-btn" onclick="play('a-vert-pomme')">▶</button>
   <audio id="a-vert-pomme" src="vert-pomme.m4a"></audio>
 </div>
 
@@ -175,12 +234,12 @@
   <div class="double-play">
     <div class="double-word">
       <span>Brun</span>
-      <button class="play-btn" onclick="document.getElementById('a-brun').play()">▶</button>
+      <button class="play-btn" onclick="play('a-brun')">▶</button>
       <audio id="a-brun" src="brun.m4a"></audio>
     </div>
     <div class="double-word">
       <span>Marron</span>
-      <button class="play-btn" onclick="document.getElementById('a-marron').play()">▶</button>
+      <button class="play-btn" onclick="play('a-marron')">▶</button>
       <audio id="a-marron" src="marron.m4a"></audio>
     </div>
   </div>
@@ -189,23 +248,76 @@
 <div class="row">
   <div class="swatch" style="background:#9E9E9E;"></div>
   <div class="words"><span class="fr">Gris</span><br><span class="th">สีเทา</span></div>
-  <button class="play-btn" onclick="document.getElementById('a-gris').play()">▶</button>
+  <button class="play-btn" onclick="play('a-gris')">▶</button>
   <audio id="a-gris" src="gris.m4a"></audio>
 </div>
 
 <div class="row">
   <div class="swatch" style="background:#1A1A1A;"></div>
   <div class="words"><span class="fr">Noir</span><br><span class="th">สีดำ</span></div>
-  <button class="play-btn" onclick="document.getElementById('a-noir').play()">▶</button>
+  <button class="play-btn" onclick="play('a-noir')">▶</button>
   <audio id="a-noir" src="noir.m4a"></audio>
 </div>
 
 <div class="row">
   <div class="swatch" style="background:#FFFFFF;"></div>
   <div class="words"><span class="fr">Blanc</span><br><span class="th">สีขาว</span></div>
-  <button class="play-btn" onclick="document.getElementById('a-blanc').play()">▶</button>
+  <button class="play-btn" onclick="play('a-blanc')">▶</button>
   <audio id="a-blanc" src="blanc.m4a"></audio>
 </div>
 
-</body>
-</html>
+<audio id="gen-audio-player"></audio>
+
+<script>
+  const COLORS = [
+    { name: "jaune",        hex: "#FFD700", audio: ["jaune.m4a"] },
+    { name: "jaune-citron", hex: "#E8E84A", audio: ["jaune-citron.m4a"] },
+    { name: "orange",       hex: "#FF8C00", audio: ["orange.m4a"] },
+    { name: "rose",         hex: "#FF9EC4", audio: ["rose.m4a"] },
+    { name: "rouge",        hex: "#E53935", audio: ["rouge.m4a"] },
+    { name: "violet",       hex: "#8E24AA", audio: ["violet.m4a"] },
+    { name: "mauve",        hex: "#C39BD3", audio: ["mauve.m4a"] },
+    { name: "bleu",         hex: "#1E3A8A", audio: ["bleu.m4a"] },
+    { name: "bleu ciel",    hex: "#56C2E0", audio: ["bleu-ciel.m4a"] },
+    { name: "vert",         hex: "#2E7D32", audio: ["vert.m4a"] },
+    { name: "vert pomme",   hex: "#8BC34A", audio: ["vert-pomme.m4a"] },
+    { name: "brun-marron",  hex: "#7B4B2A", audio: ["brun.m4a", "marron.m4a"] },
+    { name: "gris",         hex: "#9E9E9E", audio: ["gris.m4a"] },
+    { name: "noir",         hex: "#1A1A1A", audio: ["noir.m4a"] },
+    { name: "blanc",        hex: "#FFFFFF", audio: ["blanc.m4a"] }
+  ];
+
+  let currentGenColor = null;
+  let brunToggle = 0;
+
+  window.play = function(id) {
+    const audio = document.getElementById(id);
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play();
+    }
+  }
+
+  window.nextColor = function() {
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * COLORS.length);
+    } while (COLORS[randomIndex] === currentGenColor && COLORS.length > 1);
+
+    currentGenColor = COLORS[randomIndex];
+
+    const circle = document.getElementById('gen-circle');
+    circle.style.backgroundColor = currentGenColor.hex;
+    
+    const isLight = (currentGenColor.hex === "#FFFFFF" || currentGenColor.hex === "#E8E84A" || currentGenColor.hex === "#FFD700" || currentGenColor.hex === "#FF9EC4" || currentGenColor.hex === "#56C2E0");
+    circle.style.color = isLight ? "rgba(0,0,0,0.3)" : "rgba(255,255,255,0.6)";
+  }
+
+  window.playGenAudio = function() {
+    if (!currentGenColor) {
+      window.nextColor();
+    }
+    
+    const player = document.getElementById('gen-audio-player');
+    let audioSrc = "";
+
