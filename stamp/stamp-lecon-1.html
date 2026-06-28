@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leçon 1 — สแตมป์</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background: #faf9f7;
+    color: #2b2b2b;
+    margin: 0;
+    padding: 24px 16px 60px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+h1 {
+font-size: 1.4em;
+text-align: center;
+margin-bottom: 4px;
+}
+.subtitle {
+text-align: center;
+color: #999;
+font-size: 0.9em;
+margin-bottom: 32px;
+}
+
+/* SECTION DIVIDER */
+.section-title {
+font-size: 0.72em;
+font-weight: 600;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: #bbb;
+margin: 28px 0 10px 4px;
+}
+
+/* STANDARD ROW */
+.row {
+display: flex;
+align-items: center;
+gap: 12px;
+background: #fff;
+border-radius: 14px;
+padding: 12px 16px;
+margin-bottom: 10px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+}
+.words {
+flex: 1;
+line-height: 1.35;
+}
+.fr {
+font-weight: 600;
+font-size: 1.05em;
+}
+.th {
+color: #666;
+font-size: 0.95em;
+}
+.th-note {
+color: #aaa;
+font-size: 0.8em;
+margin-top: 2px;
+line-height: 1.4;
+}
+.play-btn {
+background: #4a7c59;
+color: #fff;
+border: none;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+font-size: 1em;
+flex-shrink: 0;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.play-btn:active { background: #38613f; }
+
+/* DOUBLE PLAY BUTTONS */
+.double-play {
+display: flex;
+gap: 6px;
+flex-shrink: 0;
+}
+.btn-label {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 2px;
+}
+.btn-label span {
+font-size: 0.65em;
+color: #aaa;
+}
+
+/* CA VA — colored dots */
+.ca-va-block {
+background: #fff;
+border-radius: 14px;
+padding: 12px 16px;
+margin-bottom: 10px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+}
+.ca-va-question {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-bottom: 10px;
+}
+.ca-va-responses {
+display: flex;
+flex-direction: column;
+gap: 8px;
+padding-left: 4px;
+}
+.ca-va-response {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.dot {
+width: 14px;
+height: 14px;
+border-radius: 50%;
+flex-shrink: 0;
+}
+.dot-green  { background: #A8D5B5; }
+.dot-orange { background: #F5C97A; }
+.dot-red    { background: #F0A0A0; }
+
+.response-words {
+flex: 1;
+line-height: 1.3;
+}
+.response-fr {
+font-weight: 600;
+font-size: 0.95em;
+}
+.response-th {
+color: #888;
+font-size: 0.85em;
+}
+
+/* PRONOUN ROWS */
+.pronoun-row {
+display: flex;
+align-items: flex-start;
+gap: 12px;
+background: #fff;
+border-radius: 14px;
+padding: 12px 16px;
+margin-bottom: 10px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+}
+.pronoun-left {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 6px;
+flex-shrink: 0;
+}
+.pronoun-fr {
+font-weight: 700;
+font-size: 1.1em;
+min-width: 40px;
+text-align: center;
+}
+.pronoun-info {
+flex: 1;
+line-height: 1.35;
+}
+.pronoun-th {
+font-weight: 600;
+font-size: 0.95em;
+color: #444;
+}
+.pronoun-note {
+font-size: 0.8em;
+color: #999;
+margin-top: 3px;
+line-height: 1.4;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Les couleurs 👫🏻</h1>
+<p class="subtitle">Leçon 1 — Mercredi 10 Juin 2026 — Blue Coffee Phrasing</p>
+
+<!-- ── SECTION 1 : SALUTATIONS ── -->
+
+<p class="section-title">Salutations</p>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Bonjour</div>
+    <div class="th">สวัสดีค่ะ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-bonjour').play()">▶</button>
+  <audio id="a-bonjour" src="../audio/bonjour.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Au revoir</div>
+    <div class="th">ลาก่อนค่ะ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-au-revoir').play()">▶</button>
+  <audio id="a-au-revoir" src="../audio/au-revoir.m4a"></audio>
+</div>
+
+<!-- Ça va block -->
+
+<div class="ca-va-block">
+  <div class="ca-va-question">
+    <div class="words">
+      <div class="fr">Ça va ?</div>
+      <div class="th">สบายดีไหม</div>
+    </div>
+    <button class="play-btn" onclick="document.getElementById('a-ca-va-question').play()">▶</button>
+    <audio id="a-ca-va-question" src="../audio/ca-va-question.m4a"></audio>
+  </div>
+  <div class="ca-va-responses">
+    <div class="ca-va-response">
+      <div class="dot dot-green"></div>
+      <div class="response-words">
+        <div class="response-fr">Ça va</div>
+        <div class="response-th">สบายดีค่ะ</div>
+      </div>
+      <button class="play-btn" onclick="document.getElementById('a-ca-va-reponse').play()">▶</button>
+      <audio id="a-ca-va-reponse" src="../audio/ca-va-reponse.m4a"></audio>
+    </div>
+    <div class="ca-va-response">
+      <div class="dot dot-orange"></div>
+      <div class="response-words">
+        <div class="response-fr">Koussi koussa</div>
+        <div class="response-th">เฉยๆ</div>
+      </div>
+      <button class="play-btn" onclick="document.getElementById('a-koussi-koussa').play()">▶</button>
+      <audio id="a-koussi-koussa" src="../audio/koussi-koussa.m4a"></audio>
+    </div>
+    <div class="ca-va-response">
+      <div class="dot dot-red"></div>
+      <div class="response-words">
+        <div class="response-fr">Bof</div>
+        <div class="response-th">ไม่ค่อยดี</div>
+      </div>
+      <button class="play-btn" onclick="document.getElementById('a-bof').play()">▶</button>
+      <audio id="a-bof" src="../audio/bof.m4a"></audio>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Et toi ?</div>
+    <div class="th">แล้วเธอล่ะคะ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-et-toi').play()">▶</button>
+  <audio id="a-et-toi" src="../audio/et-toi.m4a"></audio>
+</div>
+
+<!-- ── SECTION 2 : PRONOMS ── -->
+
+<p class="section-title">Les pronoms personnels</p>
+
+<div class="pronoun-row">
+  <div class="pronoun-left">
+    <div class="pronoun-fr">je</div>
+    <button class="play-btn" onclick="document.getElementById('a-je').play()">▶</button>
+    <audio id="a-je" src="../audio/je.m4a"></audio>
+  </div>
+  <div class="pronoun-info">
+    <div class="pronoun-th">ฉัน / ผม</div>
+    <div class="pronoun-note">ใช้แทนตัวเอง ไม่แยกเพศ ต่างจากภาษาไทย</div>
+  </div>
+</div>
+
+<div class="pronoun-row">
+  <div class="pronoun-left">
+    <div class="pronoun-fr">tu</div>
+    <button class="play-btn" onclick="document.getElementById('a-tu').play()">▶</button>
+    <audio id="a-tu" src="../audio/tu.m4a"></audio>
+  </div>
+  <div class="pronoun-info">
+    <div class="pronoun-th">คุณ</div>
+    <div class="pronoun-note">ใช้เมื่อพูดกับคนที่รู้จักสนิท เพื่อน ครอบครัว เด็ก ถ้าไม่สนิทให้ใช้ vous แทน</div>
+  </div>
+</div>
+
+<div class="pronoun-row">
+  <div class="pronoun-left">
+    <div class="pronoun-fr">il</div>
+    <button class="play-btn" onclick="document.getElementById('a-il').play()">▶</button>
+    <audio id="a-il" src="../audio/il.m4a"></audio>
+  </div>
+  <div class="pronoun-info">
+    <div class="pronoun-th">เขา</div>
+    <div class="pronoun-note">ใช้เมื่อพูดถึงผู้ชายหรือสิ่งของเพศชายคนเดียว/อันเดียว</div>
+  </div>
+</div>
+
+<div class="pronoun-row">
+  <div class="pronoun-left">
+    <div class="pronoun-fr">elle</div>
+    <button class="play-btn" onclick="document.getElementById('a-elle').play()">▶</button>
+    <audio id="a-elle" src="../audio/elle.m4a"></audio>
+  </div>
+  <div class="pronoun-info">
+    <div class="pronoun-th">เธอ</div>
+    <div class="pronoun-note">ใช้เมื่อพูดถึงผู้หญิงหรือสิ่งของเพศหญิงคนเดียว/อันเดียว</div>
+  </div>
+</div>
+
+<div class="pronoun-row">
+  <div class="pronoun-left">
+    <div class="pronoun-fr">on</div>
+    <button class="play-btn" onclick="document.getElementById('a-on').play()">▶</button>
+    <audio id="a-on" src="../audio/on.m4a"></audio>
+  </div>
+  <div class="pronoun-info">
+    <div class="pronoun-th">เรา</div>
+    <div class="pronoun-note">ในภาษาพูดใช้แทน nous เกือบทั้งหมด คนฝรั่งเศสแทบไม่พูด nous ในชีวิตประจำวัน</div>
+  </div>
+</div>
+
+<div class="pronoun-row">
+  <div class="pronoun-left">
+    <div class="pronoun-fr">nous</div>
+    <button class="play-btn" onclick="document.getElementById('a-nous').play()">▶</button>
+    <audio id="a-nous" src="../audio/nous.m4a"></audio>
+  </div>
+  <div class="pronoun-info">
+    <div class="pronoun-th">เรา</div>
+    <div class="pronoun-note">ในภาษาพูดแทบไม่ใช้ มักได้ยินในสุนทรพจน์หรือภาษาเขียนเท่านั้น</div>
+  </div>
+</div>
+
+<div class="pronoun-row">
+  <div class="pronoun-left">
+    <div class="pronoun-fr">vous</div>
+    <button class="play-btn" onclick="document.getElementById('a-vous').play()">▶</button>
+    <audio id="a-vous" src="../audio/vous.m4a"></audio>
+  </div>
+  <div class="pronoun-info">
+    <div class="pronoun-th">คุณ</div>
+    <div class="pronoun-note">ใช้สองแบบ คือใช้เมื่อพูดกับคนที่ไม่สนิทหรือผู้ใหญ่ที่เคารพ และใช้เมื่อพูดกับหลายคนพร้อมกัน</div>
+  </div>
+</div>
+
+<div class="pronoun-row">
+  <div class="pronoun-left">
+    <div class="pronoun-fr">ils</div>
+    <button class="play-btn" onclick="document.getElementById('a-ils').play()">▶</button>
+    <audio id="a-ils" src="../audio/ils.m4a"></audio>
+  </div>
+  <div class="pronoun-info">
+    <div class="pronoun-th">พวกเขา</div>
+    <div class="pronoun-note">ใช้เมื่อพูดถึงผู้ชายหลายคน หรือกลุ่มที่มีผู้ชายปนอยู่แม้แต่คนเดียว</div>
+  </div>
+</div>
+
+<div class="pronoun-row">
+  <div class="pronoun-left">
+    <div class="pronoun-fr">elles</div>
+    <button class="play-btn" onclick="document.getElementById('a-elles').play()">▶</button>
+    <audio id="a-elles" src="../audio/elles.m4a"></audio>
+  </div>
+  <div class="pronoun-info">
+    <div class="pronoun-th">พวกเธอ</div>
+    <div class="pronoun-note">ใช้เมื่อพูดถึงผู้หญิงหรือสิ่งของเพศหญิงหลายคน/หลายอัน</div>
+  </div>
+</div>
+
+<!-- ── SECTION 3 : PHRASES ── -->
+
+<p class="section-title">Expressions du quotidien</p>
+
+<!-- FAIRE -->
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Tu fais quoi ?</div>
+    <div class="th">คุณทำอะไร</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-tu-fais-quoi').play()">▶</button>
+  <audio id="a-tu-fais-quoi" src="../audio/tu-fais-quoi.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Qu'est-ce que tu fais ?</div>
+    <div class="th">คุณทำอะไร</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-qu-est-ce-que-tu-fais').play()">▶</button>
+  <audio id="a-qu-est-ce-que-tu-fais" src="../audio/qu-est-ce-que-tu-fais.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Je regarde une série.</div>
+    <div class="th">ฉันดูซีรีส์อยู่</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-je-regarde-une-serie').play()">▶</button>
+  <audio id="a-je-regarde-une-serie" src="../audio/je-regarde-une-serie.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Qu'est-ce que tu fous ?</div>
+    <div class="th">ทำอะไรวะ</div>
+  </div>
+  <div class="double-play">
+    <div class="btn-label">
+      <button class="play-btn" onclick="document.getElementById('a-qu-est-ce-que-tu-fous').play()">▶</button>
+      <span>long</span>
+    </div>
+    <div class="btn-label">
+      <button class="play-btn" onclick="document.getElementById('a-qu-est-ce-tu-fous').play()">▶</button>
+      <span>court</span>
+    </div>
+  </div>
+  <audio id="a-qu-est-ce-que-tu-fous" src="../audio/qu-est-ce-que-tu-fous.m4a"></audio>
+  <audio id="a-qu-est-ce-tu-fous" src="../audio/qu-est-ce-tu-fous.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Il fait quoi ?</div>
+    <div class="th">เขาทำอะไร</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-il-fait-quoi').play()">▶</button>
+  <audio id="a-il-fait-quoi" src="../audio/il-fait-quoi.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Elle fait quoi ?</div>
+    <div class="th">เธอทำอะไร</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-elle-fait-quoi').play()">▶</button>
+  <audio id="a-elle-fait-quoi" src="../audio/elle-fait-quoi.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">On fait quoi ?</div>
+    <div class="th">เราทำอะไรกันดี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-on-fait-quoi').play()">▶</button>
+  <audio id="a-on-fait-quoi" src="../audio/on-fait-quoi.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Vous faites quoi ?</div>
+    <div class="th">คุณทำอะไร</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-vous-faites-quoi').play()">▶</button>
+  <audio id="a-vous-faites-quoi" src="../audio/vous-faites-quoi.m4a"></audio>
+</div>
+
+<!-- ALLER -->
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Tu vas où ?</div>
+    <div class="th">คุณไปไหน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-tu-vas-ou').play()">▶</button>
+  <audio id="a-tu-vas-ou" src="../audio/tu-vas-ou.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Où tu vas ?</div>
+    <div class="th">คุณไปไหน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-ou-tu-vas').play()">▶</button>
+  <audio id="a-ou-tu-vas" src="../audio/ou-tu-vas.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Je vais à la gym.</div>
+    <div class="th">ฉันไปฟิตเนส</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-je-vais-a-la-gym').play()">▶</button>
+  <audio id="a-je-vais-a-la-gym" src="../audio/je-vais-a-la-gym.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Il va où ?</div>
+    <div class="th">เขาไปไหน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-il-va-ou').play()">▶</button>
+  <audio id="a-il-va-ou" src="../audio/il-va-ou.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Elle va où ?</div>
+    <div class="th">เธอไปไหน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-elle-va-ou').play()">▶</button>
+  <audio id="a-elle-va-ou" src="../audio/elle-va-ou.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">On va où ?</div>
+    <div class="th">เราไปไหนกันดี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-on-va-ou').play()">▶</button>
+  <audio id="a-on-va-ou" src="../audio/on-va-ou.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Vous allez où ?</div>
+    <div class="th">คุณไปไหน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-vois-allez-ou').play()">▶</button>
+  <audio id="a-vois-allez-ou" src="../audio/vois-allez-ou.m4a"></audio>
+</div>
+
+</body>
+</html>
