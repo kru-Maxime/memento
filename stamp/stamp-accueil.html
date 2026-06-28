@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mémento — สแตมป์</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background: #faf9f7;
+    color: #2b2b2b;
+    margin: 0;
+    padding: 32px 16px 60px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+.header {
+text-align: center;
+margin-bottom: 36px;
+padding-bottom: 24px;
+border-bottom: 1px solid #e8e4e0;
+}
+.header h1 {
+font-size: 1.25em;
+font-weight: 700;
+line-height: 1.4;
+margin: 0 0 8px 0;
+color: #1a1a1a;
+}
+.header .thai {
+font-size: 1em;
+color: #888;
+margin: 0;
+}
+
+.lesson {
+display: flex;
+align-items: center;
+gap: 14px;
+background: #fff;
+border-radius: 14px;
+padding: 14px 16px;
+margin-bottom: 12px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+text-decoration: none;
+color: inherit;
+}
+.lesson.disabled {
+opacity: 0.45;
+cursor: default;
+pointer-events: none;
+}
+.lesson:active {
+background: #f5f0eb;
+}
+
+.square {
+width: 36px;
+height: 36px;
+border-radius: 6px;
+flex-shrink: 0;
+}
+
+.lesson-info {
+flex: 1;
+}
+.lesson-title {
+font-weight: 700;
+font-size: 1.05em;
+margin-bottom: 3px;
+}
+.lesson-meta {
+font-size: 0.82em;
+color: #999;
+}
+.lesson-emoji {
+font-size: 1.4em;
+flex-shrink: 0;
+}
+.coming-soon {
+font-size: 0.75em;
+color: #bbb;
+margin-top: 3px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="header">
+  <h1>Mémento des cours de français<br>de Stamp avec Maxime</h1>
+  <p class="thai">สมุดบันทึกบทเรียนภาษาฝรั่งเศสของสแตมป์กับครูมักซิม</p>
+</div>
+
+<!-- Leçon 1 — rose pâle -->
+
+<div class="lesson disabled">
+  <div class="square" style="background: #FFB3C6;"></div>
+  <div class="lesson-info">
+    <div class="lesson-title">Leçon 1 — Les pronoms personnels</div>
+    <div class="lesson-meta">Mercredi 10 Juin 2026 · Blue Coffee Phrasing</div>
+    <div class="coming-soon">Bientôt disponible</div>
+  </div>
+  <div class="lesson-emoji">👩🏽‍🤝‍👨🏻</div>
+</div>
+
+<!-- Leçon 2 — rose moyen -->
+
+<a class="lesson" href="stamp-lecon-2.html">
+  <div class="square" style="background: #FF6B9D;"></div>
+  <div class="lesson-info">
+    <div class="lesson-title">Leçon 2 — Les couleurs</div>
+    <div class="lesson-meta">Jeudi 11 Juin 2026 · Fruitable</div>
+  </div>
+  <div class="lesson-emoji">🎨</div>
+</a>
+
+<!-- Leçon 3 — fuchsia vif -->
+
+<div class="lesson disabled">
+  <div class="square" style="background: #D63384;"></div>
+  <div class="lesson-info">
+    <div class="lesson-title">Leçon 3 — Les questions</div>
+    <div class="lesson-meta">Mercredi 17 Juin 2026 · Weave Artisan Society</div>
+    <div class="coming-soon">Bientôt disponible</div>
+  </div>
+  <div class="lesson-emoji">❓</div>
+</div>
+
+<!-- Leçon 4 — mauve franc -->
+
+<div class="lesson disabled">
+  <div class="square" style="background: #A855C8;"></div>
+  <div class="lesson-info">
+    <div class="lesson-title">Leçon 4 — Vocabulaire</div>
+    <div class="lesson-meta">Mercredi 24 Juin 2026 · Fernpresso at Lake</div>
+    <div class="coming-soon">Bientôt disponible</div>
+  </div>
+  <div class="lesson-emoji">📖</div>
+</div>
+
+<!-- Leçon 5 — mauve désaturé, amorce vers gris -->
+
+<div class="lesson disabled">
+  <div class="square" style="background: #9B7EAA;"></div>
+  <div class="lesson-info">
+    <div class="lesson-title">Leçon 5 — Le corps humain</div>
+    <div class="lesson-meta">Jeudi 25 Juin 2026 · Wila Cafe</div>
+    <div class="coming-soon">Bientôt disponible</div>
+  </div>
+  <div class="lesson-emoji">🫀</div>
+</div>
+
+</body>
+</html>
