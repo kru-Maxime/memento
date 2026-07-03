@@ -1,3 +1,6 @@
+Voici le code mis à jour avec les leçons 1 et 6 activées :
+
+```html
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -95,20 +98,18 @@ margin-top: 3px;
   <p class="thai">สมุดบันทึกบทเรียนภาษาฝรั่งเศสของสแตมป์กับครูมักซิม</p>
 </div>
 
-<!-- Leçon 1 — rose pâle -->
-
-<div class="lesson disabled">
+<!-- Leçon 1 — Activée (lien ajouté) -->
+<a class="lesson" href="stamp-lecon-1.html">
   <div class="square" style="background: #FFB3C6;"></div>
   <div class="lesson-info">
     <div class="lesson-title">Leçon 1 — Les pronoms personnels</div>
     <div class="lesson-meta">Mercredi 10 Juin 2026 · Blue Coffee Phrasing</div>
-    <div class="coming-soon">Bientôt disponible</div>
+    <!-- Supprimé : <div class="coming-soon">Bientôt disponible</div> -->
   </div>
   <div class="lesson-emoji">👩🏽‍🤝‍👨🏻</div>
-</div>
+</a>
 
-<!-- Leçon 2 — rose moyen -->
-
+<!-- Leçon 2 — Activée -->
 <a class="lesson" href="stamp-lecon-2.html">
   <div class="square" style="background: #FF6B9D;"></div>
   <div class="lesson-info">
@@ -118,8 +119,7 @@ margin-top: 3px;
   <div class="lesson-emoji">🎨</div>
 </a>
 
-<!-- Leçon 3 — fuchsia vif -->
-
+<!-- Leçon 3 — Désactivée -->
 <div class="lesson disabled">
   <div class="square" style="background: #D63384;"></div>
   <div class="lesson-info">
@@ -130,8 +130,7 @@ margin-top: 3px;
   <div class="lesson-emoji">❓</div>
 </div>
 
-<!-- Leçon 4 — mauve franc -->
-
+<!-- Leçon 4 — Désactivée -->
 <div class="lesson disabled">
   <div class="square" style="background: #A855C8;"></div>
   <div class="lesson-info">
@@ -142,8 +141,7 @@ margin-top: 3px;
   <div class="lesson-emoji">📖</div>
 </div>
 
-<!-- Leçon 5 — mauve désaturé, amorce vers gris -->
-
+<!-- Leçon 5 — Désactivée -->
 <div class="lesson disabled">
   <div class="square" style="background: #9B7EAA;"></div>
   <div class="lesson-info">
@@ -154,17 +152,28 @@ margin-top: 3px;
   <div class="lesson-emoji">🫀</div>
 </div>
 
-<!-- Leçon 6 — mauve très désaturé, gris lavande -->
-
-<div class="lesson disabled">
+<!-- Leçon 6 — Activée (lien ajouté) -->
+<a class="lesson" href="stamp-lecon-6.html">
   <div class="square" style="background: #7A6E82;"></div>
   <div class="lesson-info">
     <div class="lesson-title">Leçon 6 — Les verbes être et avoir</div>
     <div class="lesson-meta">Mercredi 1 Juillet 2026 · Por Phu Cat Cafe</div>
-    <div class="coming-soon">Bientôt disponible</div>
+    <!-- Supprimé : <div class="coming-soon">Bientôt disponible</div> -->
   </div>
   <div class="lesson-emoji">✏️</div>
-</div>
+</a>
 
 </body>
 </html>
+```
+
+Modifications effectuées :
+
+1. Leçon 1 :
+   · Remplacé <div class="lesson disabled"> par <a class="lesson" href="stamp-lecon-1.html">
+   · Supprimé le commentaire "Bientôt disponible"
+2. Leçon 6 :
+   · Remplacé <div class="lesson disabled"> par <a class="lesson" href="stamp-lecon-6.html">
+   · Supprimé le commentaire "Bientôt disponible"
+
+Les leçons 1 et 6 sont maintenant des liens cliquables, tout comme la leçon 2, avec une opacité normale et sans le message "Bientôt disponible".
