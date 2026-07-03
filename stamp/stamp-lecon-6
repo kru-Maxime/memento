@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leçon 6 — สแตมป์</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background: #faf9f7;
+    color: #2b2b2b;
+    margin: 0;
+    padding: 24px 16px 60px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 1.4em;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #999;
+    font-size: 0.9em;
+    margin-bottom: 32px;
+  }
+  .section-title {
+    font-size: 0.72em;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #bbb;
+    margin: 28px 0 10px 4px;
+  }
+  .intro-block {
+    background: #fff;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  }
+  .intro-fr {
+    font-weight: 600;
+    font-size: 1em;
+    margin-bottom: 6px;
+    color: #2b2b2b;
+  }
+  .intro-th {
+    font-size: 0.9em;
+    color: #888;
+    line-height: 1.5;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  }
+  .words { flex: 1; line-height: 1.35; }
+  .fr { font-weight: 600; font-size: 1.05em; }
+  .th { color: #666; font-size: 0.95em; }
+  .th-note { color: #aaa; font-size: 0.8em; margin-top: 4px; line-height: 1.5; }
+  .play-btn {
+    background: #4a7c59;
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1em;
+    flex-shrink: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .play-btn:active { background: #38613f; }
+  .conj-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 11px 16px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  }
+  .conj-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    min-width: 100px;
+  }
+  .conj-fr {
+    font-weight: 700;
+    font-size: 1em;
+    text-align: center;
+  }
+  .conj-th {
+    color: #999;
+    font-size: 0.85em;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>Être & Avoir ✏️</h1>
+<p class="subtitle">Leçon 6 — Mercredi 1 Juillet 2026 — Por Phu Cat Cafe</p>
+
+<!-- ── SECTION 1 : ÊTRE ── -->
+
+<p class="section-title">Le verbe être au présent</p>
+
+<div class="intro-block">
+  <div class="intro-fr">En français, le verbe <em>être</em> joue le rôle de เป็น, คือ, อยู่</div>
+  <div class="intro-th">กริยา "être" ในภาษาฝรั่งเศสที่แปลว่า "เป็น" "คือ" หรือ "อยู่" นั้นใช้ในรูปปัจจุบันแบบนี้ค่ะ</div>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">je suis</div>
+    <div class="conj-th">ฉันเป็น</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-je-suis').play()">▶</button>
+  <audio id="a-je-suis" src="../audio/je-suis.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">tu es</div>
+    <div class="conj-th">คุณเป็น</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-tu-es').play()">▶</button>
+  <audio id="a-tu-es" src="../audio/tu-es.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">il est</div>
+    <div class="conj-th">เขาเป็น</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-il-est').play()">▶</button>
+  <audio id="a-il-est" src="../audio/il-est.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">elle est</div>
+    <div class="conj-th">เธอเป็น</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-elle-est').play()">▶</button>
+  <audio id="a-elle-est" src="../audio/elle-est.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">on est</div>
+    <div class="conj-th">เราเป็น</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-on-est').play()">▶</button>
+  <audio id="a-on-est" src="../audio/on-est.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">nous sommes</div>
+    <div class="conj-th">พวกเราเป็น</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-nous-sommes').play()">▶</button>
+  <audio id="a-nous-sommes" src="../audio/nous-sommes.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">vous êtes</div>
+    <div class="conj-th">พวกคุณเป็น</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-vous-etes').play()">▶</button>
+  <audio id="a-vous-etes" src="../audio/vous-etes.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">ils sont</div>
+    <div class="conj-th">พวกเขาเป็น</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-ils-sont').play()">▶</button>
+  <audio id="a-ils-sont" src="../audio/ils-sont.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">elles sont</div>
+    <div class="conj-th">พวกเธอเป็น</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-elles-sont').play()">▶</button>
+  <audio id="a-elles-sont" src="../audio/elles-sont.m4a"></audio>
+</div>
+
+<!-- ── SECTION 2 : AVOIR ── -->
+
+<p class="section-title">Le verbe avoir au présent</p>
+
+<div class="intro-block">
+  <div class="intro-th">กริยา "avoir" ในรูปปัจจุบัน</div>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">j'ai</div>
+    <div class="conj-th">ฉันมี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-j-ai').play()">▶</button>
+  <audio id="a-j-ai" src="../audio/j-ai.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">tu as</div>
+    <div class="conj-th">คุณมี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-tu-as').play()">▶</button>
+  <audio id="a-tu-as" src="../audio/tu-as.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">il a</div>
+    <div class="conj-th">เขามี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-il-a').play()">▶</button>
+  <audio id="a-il-a" src="../audio/il-a.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">elle a</div>
+    <div class="conj-th">เธอมี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-elle-a').play()">▶</button>
+  <audio id="a-elle-a" src="../audio/elle-a.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">on a</div>
+    <div class="conj-th">เรามี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-on-a').play()">▶</button>
+  <audio id="a-on-a" src="../audio/on-a.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">nous avons</div>
+    <div class="conj-th">พวกเรามี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-nous-avons').play()">▶</button>
+  <audio id="a-nous-avons" src="../audio/nous-avons.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">vous avez</div>
+    <div class="conj-th">พวกคุณมี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-vous-avez').play()">▶</button>
+  <audio id="a-vous-avez" src="../audio/vous-avez.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">ils ont</div>
+    <div class="conj-th">พวกเขามี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-ils-ont').play()">▶</button>
+  <audio id="a-ils-ont" src="../audio/ils-ont.m4a"></audio>
+</div>
+
+<div class="conj-row">
+  <div class="conj-left">
+    <div class="conj-fr">elles ont</div>
+    <div class="conj-th">พวกเธอมี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-elles-ont').play()">▶</button>
+  <audio id="a-elles-ont" src="../audio/elles-ont.m4a"></audio>
+</div>
+
+<!-- ── SECTION 3 : PHRASES AVEC ÊTRE ── -->
+
+<p class="section-title">Phrases avec être</p>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Je suis thaïlandaise. 🚺🇹🇭</div>
+    <div class="th">ฉันเป็นคนไทยค่ะ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-je-suis-th').play()">▶</button>
+  <audio id="a-je-suis-th" src="../audio/je-suis-thailandaise.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Tu es français ? 🚹🇫🇷</div>
+    <div class="th">คุณเป็นคนฝรั่งเศสเหรอ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-tu-es-fr-m').play()">▶</button>
+  <audio id="a-tu-es-fr-m" src="../audio/tu-es-francais.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Tu es française ? 🚺🇫🇷</div>
+    <div class="th">คุณเป็นคนฝรั่งเศสเหรอ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-tu-es-fr-f').play()">▶</button>
+  <audio id="a-tu-es-fr-f" src="../audio/tu-es-francaise.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Il est français. 🚹🇫🇷</div>
+    <div class="th">เขาเป็นคนฝรั่งเศส</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-il-est-fr').play()">▶</button>
+  <audio id="a-il-est-fr" src="../audio/il-est-francais.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Elle est française. 🚺🇫🇷</div>
+    <div class="th">เธอเป็นคนฝรั่งเศส</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-elle-est-fr').play()">▶</button>
+  <audio id="a-elle-est-fr" src="../audio/elle-est-francaise.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Il est thaïlandais. 🚹🇹🇭</div>
+    <div class="th">เขาเป็นคนไทย</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-il-est-th').play()">▶</button>
+  <audio id="a-il-est-th" src="../audio/il-est-thailandais.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Elle est thaïlandaise. 🚺🇹🇭</div>
+    <div class="th">เธอเป็นคนไทย</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-elle-est-th').play()">▶</button>
+  <audio id="a-elle-est-th" src="../audio/elle-est-thailandaise.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Il est chinois. 🚹🇨🇳</div>
+    <div class="th">เขาเป็นคนจีน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-il-est-cn').play()">▶</button>
+  <audio id="a-il-est-cn" src="../audio/il-est-chinois.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Elle est chinoise. 🚺🇨🇳</div>
+    <div class="th">เธอเป็นคนจีน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-elle-est-cn').play()">▶</button>
+  <audio id="a-elle-est-cn" src="../audio/elle-est-chinoise.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Il est coréen. 🚹🇰🇷</div>
+    <div class="th">เขาเป็นคนเกาหลี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-il-est-kr').play()">▶</button>
+  <audio id="a-il-est-kr" src="../audio/il-est-coreen.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Elle est coréenne. 🚺🇰🇷</div>
+    <div class="th">เธอเป็นคนเกาหลี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-elle-est-kr').play()">▶</button>
+  <audio id="a-elle-est-kr" src="../audio/elle-est-coreenne.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Il est japonais. 🚹🇯🇵</div>
+    <div class="th">เขาเป็นคนญี่ปุ่น</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-il-est-jp').play()">▶</button>
+  <audio id="a-il-est-jp" src="../audio/il-est-japonais.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Elle est japonaise. 🚺🇯🇵</div>
+    <div class="th">เธอเป็นคนญี่ปุ่น</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-elle-est-jp').play()">▶</button>
+  <audio id="a-elle-est-jp" src="../audio/elle-est-japonaise.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">On est à la maison.</div>
+    <div class="th">เราอยู่ที่บ้าน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-on-est-maison').play()">▶</button>
+  <audio id="a-on-est-maison" src="../audio/on-est-a-la-maison.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Vous êtes où ?</div>
+    <div class="th">พวกคุณอยู่ไหน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-vous-etes-ou').play()">▶</button>
+  <audio id="a-vous-etes-ou" src="../audio/vous-etes-ou.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Ils sont à la plage.</div>
+    <div class="th">พวกเขาอยู่ที่ชายหาด</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-ils-sont-plage').play()">▶</button>
+  <audio id="a-ils-sont-plage" src="../audio/ils-sont-a-la-plage.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Elles sont à l'hôpital.</div>
+    <div class="th">พวกเธออยู่ที่โรงพยาบาล</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-elles-sont-hopital').play()">▶</button>
+  <audio id="a-elles-sont-hopital" src="../audio/elles-sont-a-l-hopital.m4a"></audio>
+</div>
+
+<!-- ── SECTION 4 : PHRASES AVEC AVOIR ── -->
+
+<p class="section-title">Phrases avec avoir</p>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">J'ai vingt-quatre ans.</div>
+    <div class="th">ฉันอายุ 24 ปีค่ะ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-j-ai-ans').play()">▶</button>
+  <audio id="a-j-ai-ans" src="../audio/j-ai-vingt-quatre-ans.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">J'ai pas le temps.</div>
+    <div class="th">ฉันไม่มีเวลา</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-j-ai-temps').play()">▶</button>
+  <audio id="a-j-ai-temps" src="../audio/j-ai-pas-le-temps.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">T'as pas un bic ?</div>
+    <div class="th">คุณไม่มีปากกาเหรอ</div>
+    <div class="th-note">ในภาษาฝรั่งเศส เวลาพูดกันเล่นๆ จะใช้ประโยคคำถามแบบปฏิเสธ อย่าง « t'as pas… ? » บ่อยๆ เพื่อขอยืมของ หรือขอความช่วยเหลือแบบอ้อมๆ ครับ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-t-as-bic').play()">▶</button>
+  <audio id="a-t-as-bic" src="../audio/t-as-pas-un-bic.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">T'as une moto ?</div>
+    <div class="th">คุณมีมอเตอร์ไซค์ไหม</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-t-as-moto').play()">▶</button>
+  <audio id="a-t-as-moto" src="../audio/t-as-une-moto.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">T'as faim ?</div>
+    <div class="th">คุณหิวไหม</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-t-as-faim').play()">▶</button>
+  <audio id="a-t-as-faim" src="../audio/t-as-faim.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Il a les yeux marron.</div>
+    <div class="th">เขามีตาสีน้ำตาล</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-il-a-yeux').play()">▶</button>
+  <audio id="a-il-a-yeux" src="../audio/il-a-les-yeux-marron.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Elle a un gros chat gris.</div>
+    <div class="th">เธอมีแมวสีเทาตัวใหญ่</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-elle-a-chat').play()">▶</button>
+  <audio id="a-elle-a-chat" src="../audio/elle-a-un-gros-chat-gris.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">On a un petit chien blanc.</div>
+    <div class="th">เรามีหมาสีขาวตัวเล็ก</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-on-a-chien').play()">▶</button>
+  <audio id="a-on-a-chien" src="../audio/on-a-un-petit-chien-blanc.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Vous avez une voiture ?</div>
+    <div class="th">พวกคุณมีรถไหม</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-vous-avez-voiture').play()">▶</button>
+  <audio id="a-vous-avez-voiture" src="../audio/vous-avez-une-voiture.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Elles ont pas de vélo.</div>
+    <div class="th">พวกเธอไม่มีจักรยาน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-elles-ont-velo').play()">▶</button>
+  <audio id="a-elles-ont-velo" src="../audio/elles-ont-pas-de-velo.m4a"></audio>
+</div>
+
+<div class="row">
+  <div class="words">
+    <div class="fr">Ils ont un bébé.</div>
+    <div class="th">พวกเขามีเด็กทารก</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-ils-ont-bebe').play()">▶</button>
+  <audio id="a-ils-ont-bebe" src="../audio/ils-ont-un-bebe.m4a"></audio>
+</div>
+
+</body>
+</html>
