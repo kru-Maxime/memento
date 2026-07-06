@@ -55,9 +55,6 @@ display: flex; align-items: center; justify-content: center;
 font-size: 1.3em; color: white;
 pointer-events: none;
 }
-.gen-label { text-align: center; }
-.gen-fr { font-weight: 700; font-size: 1.1em; display: block; }
-.gen-th { color: #888; font-size: 0.9em; display: block; }
 .gen-next-btn {
 background: #4a7c59; color: #fff; border: none;
 width: 44px; height: 44px; border-radius: 50%;
@@ -94,8 +91,6 @@ display: flex; align-items: center; justify-content: center;
 }
 .play-btn:active { background: #38613f; }
 .double-play { display: flex; gap: 6px; flex-shrink: 0; }
-.btn-label { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.btn-label span { font-size: 0.65em; color: #aaa; }
 
 /* IMAGE OVERLAY */
 #img-overlay {
@@ -126,16 +121,11 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 
 <!-- GENERATOR -->
 
-<p class="section-title">Générateur aléatoire</p>
 <div class="generator-wrapper">
   <div class="gen-main">
     <div class="generator-card" onclick="genPlay()" ontouchstart="genPlay(); event.preventDefault();">
-      <img id="gen-img" src="../images/un-tram.jpg" alt="">
+      <img id="gen-img" src="../images/un-tram.jpeg" alt="">
       <div class="gen-play-overlay">▶</div>
-    </div>
-    <div class="gen-label">
-      <span class="gen-fr" id="gen-fr">un tram</span>
-      <span class="gen-th" id="gen-th">รถราง</span>
     </div>
   </div>
   <button class="gen-next-btn" onclick="genNext()">→</button>
@@ -147,7 +137,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 <p class="section-title">Vocabulaire</p>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-tram.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-tram.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un tram</div>
     <div class="th">รถราง</div>
@@ -157,7 +147,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-train.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-train.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un train</div>
     <div class="th">รถไฟ</div>
@@ -167,7 +157,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/une-voiture.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/une-voiture.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">une voiture</div>
     <div class="th">รถ</div>
@@ -177,7 +167,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-velo.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-velo.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un vélo</div>
     <div class="th">จักรยาน</div>
@@ -187,7 +177,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/une-moto.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/une-moto.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">une moto</div>
     <div class="th">มอเตอร์ไซค์</div>
@@ -197,7 +187,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-avion.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-avion.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un avion</div>
     <div class="th">เครื่องบิน</div>
@@ -207,7 +197,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/il-pleut.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/il-pleut.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">il pleut</div>
     <div class="th">ฝนตก</div>
@@ -217,7 +207,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/la-plage.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/la-plage.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">la plage</div>
     <div class="th">หาด</div>
@@ -227,7 +217,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/une-maison.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/une-maison.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">une maison</div>
     <div class="th">บ้าน</div>
@@ -237,7 +227,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-hopital.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-hopital.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un hôpital</div>
     <div class="th">โรงพยาบาล</div>
@@ -247,7 +237,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/une-salle-de-sport.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/une-salle-de-sport.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">une salle de sport</div>
     <div class="th">โรงยิม</div>
@@ -257,7 +247,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/une-gare.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/une-gare.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">une gare</div>
     <div class="th">สถานีรถไฟ</div>
@@ -267,7 +257,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-aeroport.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-aeroport.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un aéroport</div>
     <div class="th">สนามบิน</div>
@@ -277,7 +267,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-fromage.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-fromage.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un fromage</div>
     <div class="th">ชีส</div>
@@ -287,7 +277,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-croissant.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-croissant.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un croissant</div>
     <div class="th">ครัวซองต์</div>
@@ -297,7 +287,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-pain.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-pain.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un pain</div>
     <div class="th">ขนมปัง</div>
@@ -307,7 +297,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/une-baguette.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/une-baguette.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">une baguette</div>
     <div class="th">ขนมปังบักเก็ต</div>
@@ -317,7 +307,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/une-tartine.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/une-tartine.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">une tartine</div>
     <div class="th">ขนมปังหน้า...</div>
@@ -327,7 +317,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/des-pates.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/des-pates.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">des pâtes</div>
     <div class="th">พาสต้า</div>
@@ -337,7 +327,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/une-pomme.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/une-pomme.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">une pomme</div>
     <div class="th">แอปเปิ้ล</div>
@@ -347,7 +337,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/une-orange.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/une-orange.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">une orange</div>
     <div class="th">ส้ม</div>
@@ -357,7 +347,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/des-fraises.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/des-fraises.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">des fraises</div>
     <div class="th">สตรอว์เบอร์รี</div>
@@ -367,7 +357,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/une-banane.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/une-banane.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">une banane</div>
     <div class="th">กล้วย</div>
@@ -377,7 +367,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/du-chocolat.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/du-chocolat.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">du chocolat</div>
     <div class="th">ช็อกโกแลต</div>
@@ -387,7 +377,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-chien.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-chien.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un chien</div>
     <div class="th">หมา</div>
@@ -397,7 +387,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-chat.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-chat.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un chat</div>
     <div class="th">แมว</div>
@@ -407,7 +397,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-monsieur.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-monsieur.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un monsieur</div>
     <div class="th">สุภาพบุรุษ</div>
@@ -417,7 +407,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/une-dame.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/une-dame.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">une dame</div>
     <div class="th">สุภาพสตรี</div>
@@ -427,27 +417,21 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-mec.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-mec.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un mec / un type</div>
     <div class="th">ผู้ชาย</div>
   </div>
   <div class="double-play">
-    <div class="btn-label">
-      <button class="play-btn" onclick="document.getElementById('a-un-mec').play()">▶</button>
-      <span>mec</span>
-    </div>
-    <div class="btn-label">
-      <button class="play-btn" onclick="document.getElementById('a-un-mec-2').play()">▶</button>
-      <span>type</span>
-    </div>
+    <button class="play-btn" onclick="document.getElementById('a-un-mec').play()">▶</button>
+    <button class="play-btn" onclick="document.getElementById('a-un-mec-2').play()">▶</button>
   </div>
   <audio id="a-un-mec" src="../audio/un-mec.m4a"></audio>
   <audio id="a-un-mec-2" src="../audio/un-type.m4a"></audio>
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/une-nana.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/une-nana.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">une nana</div>
     <div class="th">สาว</div>
@@ -457,7 +441,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-garcon.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-garcon.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un garçon</div>
     <div class="th">เด็กผู้ชาย</div>
@@ -467,7 +451,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/une-fille.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/une-fille.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">une fille</div>
     <div class="th">เด็กผู้หญิง</div>
@@ -477,7 +461,7 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-bebe.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <img class="thumb" src="../images/un-bebe.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
   <div class="words">
     <div class="fr">un bébé</div>
     <div class="th">เด็กทารก</div>
@@ -543,7 +527,7 @@ function genNext() {
     lastImgIdxMap[word.key] = imgIdx;
   }
 
-  document.getElementById('gen-img').src = `../images/${word.images[imgIdx]}.jpg`;
+  document.getElementById('gen-img').src = `../images/${word.images[imgIdx]}.jpeg`;
   document.getElementById('gen-fr').textContent = word.fr;
   document.getElementById('gen-th').textContent = word.th;
   const genAudio = document.getElementById('gen-audio');
