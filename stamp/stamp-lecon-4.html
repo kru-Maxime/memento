@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leçon 4 — สแตมป์</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background: #faf9f7;
+    color: #2b2b2b;
+    margin: 0;
+    padding: 24px 16px 60px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 1.4em; text-align: center; margin-bottom: 4px; }
+  .subtitle { text-align: center; color: #999; font-size: 0.9em; margin-bottom: 24px; }
+  .section-title {
+    font-size: 0.72em; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #bbb; margin: 28px 0 10px 4px;
+  }
+
+/* GENERATOR */
+.generator-wrapper {
+display: flex;
+align-items: center;
+gap: 14px;
+margin-bottom: 32px;
+justify-content: center;
+}
+.gen-main { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.generator-card {
+width: min(240px, 68vw);
+height: min(240px, 68vw);
+border-radius: 16px;
+overflow: hidden;
+position: relative;
+cursor: pointer;
+box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+flex-shrink: 0;
+}
+.generator-card img {
+width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.gen-play-overlay {
+position: absolute; top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+width: 52px; height: 52px;
+background: rgba(255,255,255,0.35);
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-size: 1.3em; color: white;
+pointer-events: none;
+}
+.gen-label { text-align: center; }
+.gen-fr { font-weight: 700; font-size: 1.1em; display: block; }
+.gen-th { color: #888; font-size: 0.9em; display: block; }
+.gen-next-btn {
+background: #4a7c59; color: #fff; border: none;
+width: 44px; height: 44px; border-radius: 50%;
+font-size: 1.3em; cursor: pointer; flex-shrink: 0;
+display: flex; align-items: center; justify-content: center;
+}
+.gen-next-btn:active { background: #38613f; }
+
+/* VOCAB ROW */
+.vocab-row {
+display: flex;
+align-items: center;
+gap: 12px;
+background: #fff;
+border-radius: 14px;
+padding: 10px 14px;
+margin-bottom: 10px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+}
+.thumb {
+width: 56px; height: 56px;
+border-radius: 8px; object-fit: cover;
+cursor: pointer; flex-shrink: 0;
+-webkit-user-select: none; user-select: none;
+}
+.words { flex: 1; line-height: 1.35; }
+.fr { font-weight: 600; font-size: 1.05em; }
+.th { color: #666; font-size: 0.95em; }
+.play-btn {
+background: #4a7c59; color: #fff; border: none;
+width: 40px; height: 40px; border-radius: 50%;
+font-size: 1em; flex-shrink: 0; cursor: pointer;
+display: flex; align-items: center; justify-content: center;
+}
+.play-btn:active { background: #38613f; }
+.double-play { display: flex; gap: 6px; flex-shrink: 0; }
+.btn-label { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.btn-label span { font-size: 0.65em; color: #aaa; }
+
+/* IMAGE OVERLAY */
+#img-overlay {
+display: none; position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+background: rgba(0,0,0,0.75); z-index: 200;
+align-items: center; justify-content: center;
+}
+#overlay-img {
+width: 80vw; height: 80vw;
+max-width: 360px; max-height: 360px;
+object-fit: cover; border-radius: 16px;
+box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+</style>
+
+</head>
+<body>
+
+<h1>Vocabulaire 📖</h1>
+<p class="subtitle">Leçon 4 — Mercredi 24 Juin 2026 — Fernpresso at Lake</p>
+
+<!-- IMAGE OVERLAY -->
+
+<div id="img-overlay" ontouchend="shrinkImg()" onmouseup="shrinkImg()">
+  <img id="overlay-img" src="" alt="">
+</div>
+
+<!-- GENERATOR -->
+
+<p class="section-title">Générateur aléatoire</p>
+<div class="generator-wrapper">
+  <div class="gen-main">
+    <div class="generator-card" onclick="genPlay()" ontouchstart="genPlay(); event.preventDefault();">
+      <img id="gen-img" src="../images/un-tram.jpg" alt="">
+      <div class="gen-play-overlay">▶</div>
+    </div>
+    <div class="gen-label">
+      <span class="gen-fr" id="gen-fr">un tram</span>
+      <span class="gen-th" id="gen-th">รถราง</span>
+    </div>
+  </div>
+  <button class="gen-next-btn" onclick="genNext()">→</button>
+</div>
+<audio id="gen-audio" src="../audio/un-tram.m4a"></audio>
+
+<!-- VOCABULARY LIST -->
+
+<p class="section-title">Vocabulaire</p>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-tram.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un tram</div>
+    <div class="th">รถราง</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-tram').play()">▶</button>
+  <audio id="a-un-tram" src="../audio/un-tram.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-train.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un train</div>
+    <div class="th">รถไฟ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-train').play()">▶</button>
+  <audio id="a-un-train" src="../audio/un-train.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-voiture.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une voiture</div>
+    <div class="th">รถ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-voiture').play()">▶</button>
+  <audio id="a-une-voiture" src="../audio/une-voiture.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-velo.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un vélo</div>
+    <div class="th">จักรยาน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-velo').play()">▶</button>
+  <audio id="a-un-velo" src="../audio/un-velo.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-moto.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une moto</div>
+    <div class="th">มอเตอร์ไซค์</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-moto').play()">▶</button>
+  <audio id="a-une-moto" src="../audio/une-moto.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-avion.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un avion</div>
+    <div class="th">เครื่องบิน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-avion').play()">▶</button>
+  <audio id="a-un-avion" src="../audio/un-avion.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/il-pleut.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">il pleut</div>
+    <div class="th">ฝนตก</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-il-pleut').play()">▶</button>
+  <audio id="a-il-pleut" src="../audio/il-pleut.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/la-plage.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">la plage</div>
+    <div class="th">หาด</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-la-plage').play()">▶</button>
+  <audio id="a-la-plage" src="../audio/la-plage.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-maison.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une maison</div>
+    <div class="th">บ้าน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-maison').play()">▶</button>
+  <audio id="a-une-maison" src="../audio/une-maison.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-hopital.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un hôpital</div>
+    <div class="th">โรงพยาบาล</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-hopital').play()">▶</button>
+  <audio id="a-un-hopital" src="../audio/un-hopital.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-salle-de-sport.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une salle de sport</div>
+    <div class="th">โรงยิม</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-salle-de-sport').play()">▶</button>
+  <audio id="a-une-salle-de-sport" src="../audio/une-salle-de-sport.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-gare.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une gare</div>
+    <div class="th">สถานีรถไฟ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-gare').play()">▶</button>
+  <audio id="a-une-gare" src="../audio/une-gare.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-aeroport.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un aéroport</div>
+    <div class="th">สนามบิน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-aeroport').play()">▶</button>
+  <audio id="a-un-aeroport" src="../audio/un-aeroport.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-fromage.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un fromage</div>
+    <div class="th">ชีส</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-fromage').play()">▶</button>
+  <audio id="a-un-fromage" src="../audio/un-fromage.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-croissant.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un croissant</div>
+    <div class="th">ครัวซองต์</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-croissant').play()">▶</button>
+  <audio id="a-un-croissant" src="../audio/un-croissant.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-pain.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un pain</div>
+    <div class="th">ขนมปัง</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-pain').play()">▶</button>
+  <audio id="a-un-pain" src="../audio/un-pain.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-baguette.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une baguette</div>
+    <div class="th">ขนมปังบักเก็ต</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-baguette').play()">▶</button>
+  <audio id="a-une-baguette" src="../audio/une-baguette.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-tartine.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une tartine</div>
+    <div class="th">ขนมปังหน้า...</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-tartine').play()">▶</button>
+  <audio id="a-une-tartine" src="../audio/une-tartine.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/des-pates.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">des pâtes</div>
+    <div class="th">พาสต้า</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-des-pates').play()">▶</button>
+  <audio id="a-des-pates" src="../audio/des-pates.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-pomme.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une pomme</div>
+    <div class="th">แอปเปิ้ล</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-pomme').play()">▶</button>
+  <audio id="a-une-pomme" src="../audio/une-pomme.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-orange.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une orange</div>
+    <div class="th">ส้ม</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-orange').play()">▶</button>
+  <audio id="a-une-orange" src="../audio/une-orange.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/des-fraises.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">des fraises</div>
+    <div class="th">สตรอว์เบอร์รี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-des-fraises').play()">▶</button>
+  <audio id="a-des-fraises" src="../audio/des-fraises.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-banane.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une banane</div>
+    <div class="th">กล้วย</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-banane').play()">▶</button>
+  <audio id="a-une-banane" src="../audio/une-banane.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/du-chocolat.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">du chocolat</div>
+    <div class="th">ช็อกโกแลต</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-du-chocolat').play()">▶</button>
+  <audio id="a-du-chocolat" src="../audio/du-chocolat.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-chien.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un chien</div>
+    <div class="th">หมา</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-chien').play()">▶</button>
+  <audio id="a-un-chien" src="../audio/un-chien.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-chat.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un chat</div>
+    <div class="th">แมว</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-chat').play()">▶</button>
+  <audio id="a-un-chat" src="../audio/un-chat.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-monsieur.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un monsieur</div>
+    <div class="th">สุภาพบุรุษ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-monsieur').play()">▶</button>
+  <audio id="a-un-monsieur" src="../audio/un-monsieur.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-dame.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une dame</div>
+    <div class="th">สุภาพสตรี</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-dame').play()">▶</button>
+  <audio id="a-une-dame" src="../audio/une-dame.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-mec.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un mec / un type</div>
+    <div class="th">ผู้ชาย</div>
+  </div>
+  <div class="double-play">
+    <div class="btn-label">
+      <button class="play-btn" onclick="document.getElementById('a-un-mec').play()">▶</button>
+      <span>mec</span>
+    </div>
+    <div class="btn-label">
+      <button class="play-btn" onclick="document.getElementById('a-un-mec-2').play()">▶</button>
+      <span>type</span>
+    </div>
+  </div>
+  <audio id="a-un-mec" src="../audio/un-mec.m4a"></audio>
+  <audio id="a-un-mec-2" src="../audio/un-type.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-nana.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une nana</div>
+    <div class="th">สาว</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-nana').play()">▶</button>
+  <audio id="a-une-nana" src="../audio/une-nana.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-garcon.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un garçon</div>
+    <div class="th">เด็กผู้ชาย</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-garcon').play()">▶</button>
+  <audio id="a-un-garcon" src="../audio/un-garcon.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-fille.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une fille</div>
+    <div class="th">เด็กผู้หญิง</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-fille').play()">▶</button>
+  <audio id="a-une-fille" src="../audio/une-fille.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-bebe.jpg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un bébé</div>
+    <div class="th">เด็กทารก</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-bebe').play()">▶</button>
+  <audio id="a-un-bebe" src="../audio/un-bebe.m4a"></audio>
+</div>
+
+<script>
+const vocabData = [
+  { key: "un-tram", fr: "un tram", th: "รถราง", images: ["un-tram", "un-tram-2"], audio: "un-tram" },
+  { key: "un-train", fr: "un train", th: "รถไฟ", images: ["un-train"], audio: "un-train" },
+  { key: "une-voiture", fr: "une voiture", th: "รถ", images: ["une-voiture", "une-voiture-2"], audio: "une-voiture" },
+  { key: "un-velo", fr: "un vélo", th: "จักรยาน", images: ["un-velo", "un-velo-2"], audio: "un-velo" },
+  { key: "une-moto", fr: "une moto", th: "มอเตอร์ไซค์", images: ["une-moto", "une-moto-2"], audio: "une-moto" },
+  { key: "un-avion", fr: "un avion", th: "เครื่องบิน", images: ["un-avion", "un-avion-2"], audio: "un-avion" },
+  { key: "il-pleut", fr: "il pleut", th: "ฝนตก", images: ["il-pleut"], audio: "il-pleut" },
+  { key: "la-plage", fr: "la plage", th: "หาด", images: ["la-plage", "la-plage-2"], audio: "la-plage" },
+  { key: "une-maison", fr: "une maison", th: "บ้าน", images: ["une-maison", "une-maison-2"], audio: "une-maison" },
+  { key: "un-hopital", fr: "un hôpital", th: "โรงพยาบาล", images: ["un-hopital", "un-hopital-2"], audio: "un-hopital" },
+  { key: "une-salle-de-sport", fr: "une salle de sport", th: "โรงยิม", images: ["une-salle-de-sport", "une-salle-de-sport-2"], audio: "une-salle-de-sport" },
+  { key: "une-gare", fr: "une gare", th: "สถานีรถไฟ", images: ["une-gare", "une-gare-2"], audio: "une-gare" },
+  { key: "un-aeroport", fr: "un aéroport", th: "สนามบิน", images: ["un-aeroport", "un-aeroport-2"], audio: "un-aeroport" },
+  { key: "un-fromage", fr: "un fromage", th: "ชีส", images: ["un-fromage", "un-fromage-2", "un-fromage-3"], audio: "un-fromage" },
+  { key: "un-croissant", fr: "un croissant", th: "ครัวซองต์", images: ["un-croissant", "un-croissant-2"], audio: "un-croissant" },
+  { key: "un-pain", fr: "un pain", th: "ขนมปัง", images: ["un-pain", "un-pain-2"], audio: "un-pain" },
+  { key: "une-baguette", fr: "une baguette", th: "ขนมปังบักเก็ต", images: ["une-baguette", "une-baguette-2"], audio: "une-baguette" },
+  { key: "une-tartine", fr: "une tartine", th: "ขนมปังหน้า...", images: ["une-tartine", "une-tartine-2"], audio: "une-tartine" },
+  { key: "des-pates", fr: "des pâtes", th: "พาสต้า", images: ["des-pates", "des-pates-2"], audio: "des-pates" },
+  { key: "une-pomme", fr: "une pomme", th: "แอปเปิ้ล", images: ["une-pomme"], audio: "une-pomme" },
+  { key: "une-orange", fr: "une orange", th: "ส้ม", images: ["une-orange"], audio: "une-orange" },
+  { key: "des-fraises", fr: "des fraises", th: "สตรอว์เบอร์รี", images: ["des-fraises", "des-fraises-2"], audio: "des-fraises" },
+  { key: "une-banane", fr: "une banane", th: "กล้วย", images: ["une-banane"], audio: "une-banane" },
+  { key: "du-chocolat", fr: "du chocolat", th: "ช็อกโกแลต", images: ["du-chocolat", "du-chocolat-2"], audio: "du-chocolat" },
+  { key: "un-chien", fr: "un chien", th: "หมา", images: ["un-chien", "un-chien-2", "un-chien-3"], audio: "un-chien" },
+  { key: "un-chat", fr: "un chat", th: "แมว", images: ["un-chat", "un-chat-2"], audio: "un-chat" },
+  { key: "un-monsieur", fr: "un monsieur", th: "สุภาพบุรุษ", images: ["un-monsieur"], audio: "un-monsieur" },
+  { key: "une-dame", fr: "une dame", th: "สุภาพสตรี", images: ["une-dame"], audio: "une-dame" },
+  { key: "un-mec", fr: "un mec / un type", th: "ผู้ชาย", images: ["un-mec", "un-mec-2", "un-mec-3"], audio: "un-mec" },
+  { key: "une-nana", fr: "une nana", th: "สาว", images: ["une-nana", "une-nana-2", "une-nana-3", "une-nana-4"], audio: "une-nana" },
+  { key: "un-garcon", fr: "un garçon", th: "เด็กผู้ชาย", images: ["un-garcon", "un-garcon-2", "un-garcon-3"], audio: "un-garcon" },
+  { key: "une-fille", fr: "une fille", th: "เด็กผู้หญิง", images: ["une-fille", "une-fille-2", "une-fille-3"], audio: "une-fille" },
+  { key: "un-bebe", fr: "un bébé", th: "เด็กทารก", images: ["un-bebe"], audio: "un-bebe" },
+];
+
+let lastWordIdx = -1;
+const lastImgIdxMap = {};
+
+function genNext() {
+  let idx;
+  const n = vocabData.length;
+  if (n === 1) { idx = 0; }
+  else {
+    do { idx = Math.floor(Math.random() * n); } while (idx === lastWordIdx);
+  }
+  lastWordIdx = idx;
+  const word = vocabData[idx];
+
+  let imgIdx = 0;
+  if (word.images.length > 1) {
+    const lastImg = lastImgIdxMap[word.key] !== undefined ? lastImgIdxMap[word.key] : -1;
+    do { imgIdx = Math.floor(Math.random() * word.images.length); } while (imgIdx === lastImg);
+    lastImgIdxMap[word.key] = imgIdx;
+  }
+
+  document.getElementById('gen-img').src = `../images/${word.images[imgIdx]}.jpg`;
+  document.getElementById('gen-fr').textContent = word.fr;
+  document.getElementById('gen-th').textContent = word.th;
+  const genAudio = document.getElementById('gen-audio');
+  genAudio.src = `../audio/${word.audio}.m4a`;
+}
+
+function genPlay() {
+  document.getElementById('gen-audio').play();
+}
+
+function expandImg(e, img) {
+  e.preventDefault();
+  document.getElementById('overlay-img').src = img.src;
+  document.getElementById('img-overlay').style.display = 'flex';
+}
+
+function shrinkImg() {
+  document.getElementById('img-overlay').style.display = 'none';
+}
+
+// Init generator on load
+window.addEventListener('load', genNext);
+</script>
+
+</body>
+</html>
