@@ -422,4 +422,140 @@ box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 </div>
 
 <div class="vocab-row">
-  <img class="thumb" src="../images/un-mec.jpeg" ontouchstart="expandImg(event,this)" onm
+  <img class="thumb" src="../images/un-mec.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un mec / un type</div>
+    <div class="th">ผู้ชาย</div>
+  </div>
+  <div class="double-play">
+    <button class="play-btn" onclick="document.getElementById('a-un-mec').play()">▶</button>
+    <button class="play-btn" onclick="document.getElementById('a-un-mec-2').play()">▶</button>
+  </div>
+  <audio id="a-un-mec" src="../audio/un-mec.m4a"></audio>
+  <audio id="a-un-mec-2" src="../audio/un-type.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-nana.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une nana</div>
+    <div class="th">สาว</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-nana').play()">▶</button>
+  <audio id="a-une-nana" src="../audio/une-nana.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-garcon.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un garçon</div>
+    <div class="th">เด็กผู้ชาย</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-garcon').play()">▶</button>
+  <audio id="a-un-garcon" src="../audio/un-garcon.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-fille.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une fille</div>
+    <div class="th">เด็กผู้หญิง</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-fille').play()">▶</button>
+  <audio id="a-une-fille" src="../audio/une-fille.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-bebe.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un bébé</div>
+    <div class="th">เด็กทารก</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-bebe').play()">▶</button>
+  <audio id="a-un-bebe" src="../audio/un-bebe.m4a"></audio>
+</div>
+
+<script>
+const vocabData = [
+  { key: "un-tram", fr: "un tram", th: "รถราง", images: ["un-tram", "un-tram-2"], audio: "un-tram" },
+  { key: "un-train", fr: "un train", th: "รถไฟ", images: ["un-train"], audio: "un-train" },
+  { key: "une-voiture", fr: "une voiture", th: "รถ", images: ["une-voiture", "une-voiture-2"], audio: "une-voiture" },
+  { key: "un-velo", fr: "un vélo", th: "จักรยาน", images: ["un-velo", "un-velo-2"], audio: "un-velo" },
+  { key: "une-moto", fr: "une moto", th: "มอเตอร์ไซค์", images: ["une-moto", "une-moto-2"], audio: "une-moto" },
+  { key: "un-avion", fr: "un avion", th: "เครื่องบิน", images: ["un-avion", "un-avion-2"], audio: "un-avion" },
+  { key: "il-pleut", fr: "il pleut", th: "ฝนตก", images: ["il-pleut"], audio: "il-pleut" },
+  { key: "la-plage", fr: "la plage", th: "หาด", images: ["la-plage", "la-plage-2"], audio: "la-plage" },
+  { key: "une-maison", fr: "une maison", th: "บ้าน", images: ["une-maison", "une-maison-2"], audio: "une-maison" },
+  { key: "un-hopital", fr: "un hôpital", th: "โรงพยาบาล", images: ["un-hopital", "un-hopital-2"], audio: "un-hopital" },
+  { key: "une-salle-de-sport", fr: "une salle de sport", th: "โรงยิม", images: ["une-salle-de-sport", "une-salle-de-sport-2"], audio: "une-salle-de-sport" },
+  { key: "une-gare", fr: "une gare", th: "สถานีรถไฟ", images: ["une-gare", "une-gare-2"], audio: "une-gare" },
+  { key: "un-aeroport", fr: "un aéroport", th: "สนามบิน", images: ["un-aeroport", "un-aeroport-2"], audio: "un-aeroport" },
+  { key: "un-fromage", fr: "un fromage", th: "ชีส", images: ["un-fromage", "un-fromage-2", "un-fromage-3"], audio: "un-fromage" },
+  { key: "un-croissant", fr: "un croissant", th: "ครัวซองต์", images: ["un-croissant", "un-croissant-2"], audio: "un-croissant" },
+  { key: "un-pain", fr: "un pain", th: "ขนมปัง", images: ["un-pain", "un-pain-2"], audio: "un-pain" },
+  { key: "une-baguette", fr: "une baguette", th: "ขนมปังบักเก็ต", images: ["une-baguette", "une-baguette-2"], audio: "une-baguette" },
+  { key: "une-tartine", fr: "une tartine", th: "ขนมปังหน้า...", images: ["une-tartine", "une-tartine-2"], audio: "une-tartine" },
+  { key: "des-pates", fr: "des pâtes", th: "พาสต้า", images: ["des-pates", "des-pates-2"], audio: "des-pates" },
+  { key: "une-pomme", fr: "une pomme", th: "แอปเปิ้ล", images: ["une-pomme"], audio: "une-pomme" },
+  { key: "une-orange", fr: "une orange", th: "ส้ม", images: ["une-orange"], audio: "une-orange" },
+  { key: "des-fraises", fr: "des fraises", th: "สตรอว์เบอร์รี", images: ["des-fraises", "des-fraises-2"], audio: "des-fraises" },
+  { key: "une-banane", fr: "une banane", th: "กล้วย", images: ["une-banane"], audio: "une-banane" },
+  { key: "du-chocolat", fr: "du chocolat", th: "ช็อกโกแลต", images: ["du-chocolat", "du-chocolat-2"], audio: "du-chocolat" },
+  { key: "un-chien", fr: "un chien", th: "หมา", images: ["un-chien", "un-chien-2", "un-chien-3"], audio: "un-chien" },
+  { key: "un-chat", fr: "un chat", th: "แมว", images: ["un-chat", "un-chat-2"], audio: "un-chat" },
+  { key: "un-monsieur", fr: "un monsieur", th: "สุภาพบุรุษ", images: ["un-monsieur"], audio: "un-monsieur" },
+  { key: "une-dame", fr: "une dame", th: "สุภาพสตรี", images: ["une-dame"], audio: "une-dame" },
+  { key: "un-mec", fr: "un mec / un type", th: "ผู้ชาย", images: ["un-mec", "un-mec-2", "un-mec-3"], audio: "un-mec" },
+  { key: "une-nana", fr: "une nana", th: "สาว", images: ["une-nana", "une-nana-2", "une-nana-3", "une-nana-4"], audio: "une-nana" },
+  { key: "un-garcon", fr: "un garçon", th: "เด็กผู้ชาย", images: ["un-garcon", "un-garcon-2", "un-garcon-3"], audio: "un-garcon" },
+  { key: "une-fille", fr: "une fille", th: "เด็กผู้หญิง", images: ["une-fille", "une-fille-2", "une-fille-3"], audio: "une-fille" },
+  { key: "un-bebe", fr: "un bébé", th: "เด็กทารก", images: ["un-bebe"], audio: "un-bebe" },
+];
+
+let lastWordIdx = -1;
+const lastImgIdxMap = {};
+
+function genNext() {
+  let idx;
+  const n = vocabData.length;
+  if (n === 1) { idx = 0; }
+  else {
+    do { idx = Math.floor(Math.random() * n); } while (idx === lastWordIdx);
+  }
+  lastWordIdx = idx;
+  const word = vocabData[idx];
+
+  let imgIdx = 0;
+  if (word.images.length > 1) {
+    const lastImg = lastImgIdxMap[word.key] !== undefined ? lastImgIdxMap[word.key] : -1;
+    do { imgIdx = Math.floor(Math.random() * word.images.length); } while (imgIdx === lastImg);
+    lastImgIdxMap[word.key] = imgIdx;
+  }
+
+  document.getElementById('gen-img').src = `../images/${word.images[imgIdx]}.jpeg`;
+  const genAudio = document.getElementById('gen-audio');
+  genAudio.src = `../audio/${word.audio}.m4a`;
+}
+
+function genPlay() {
+  const genAudio = document.getElementById('gen-audio');
+  genAudio.currentTime = 0;
+  genAudio.play();
+}
+
+function expandImg(e, img) {
+  e.preventDefault();
+  document.getElementById('overlay-img').src = img.src;
+  document.getElementById('img-overlay').style.display = 'flex';
+}
+
+function shrinkImg() {
+  document.getElementById('img-overlay').style.display = 'none';
+}
+
+// Init generator on load
+window.addEventListener('load', genNext);
+</script>
+
+</body>
+</html>
