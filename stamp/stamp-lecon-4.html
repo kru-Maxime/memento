@@ -514,6 +514,7 @@ const vocabData = [
 
 let lastWordIdx = -1;
 const lastImgIdxMap = {};
+let mecToggle = 0;
 
 function genNext() {
   let idx;
@@ -535,10 +536,28 @@ function genNext() {
   document.getElementById('gen-img').src = `../images/${word.images[imgIdx]}.jpeg`;
   const genAudio = document.getElementById('gen-audio');
   genAudio.src = `../audio/${word.audio}.m4a`;
+  
+  // Réinitialiser le toggle pour "un-mec" si on change de mot
+  mecToggle = 0;
 }
 
 function genPlay() {
   const genAudio = document.getElementById('gen-audio');
+  const imgSrc = document.getElementById('gen-img').src;
+  
+  // Vérifier si le mot actuel est "un-mec"
+  if (imgSrc.includes('un-mec')) {
+    // Alterner entre un-mec et un-type
+    if (mecToggle === 0) {
+      genAudio.src = '../audio/un-mec.m4a';
+      mecToggle = 1;
+    } else {
+      genAudio.src = '../audio/un-type.m4a';
+      mecToggle = 0;
+    }
+  }
+  // Si ce n'est pas "un-mec", on garde le fichier audio déjà défini par genNext()
+  
   genAudio.currentTime = 0;
   genAudio.play();
 }
