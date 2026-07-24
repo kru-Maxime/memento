@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leçon 9 — สแตมป์</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background: #faf9f7;
+    color: #2b2b2b;
+    margin: 0;
+    padding: 24px 16px 60px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 1.4em; text-align: center; margin-bottom: 4px; }
+  .subtitle { text-align: center; color: #999; font-size: 0.9em; margin-bottom: 24px; }
+  .section-title {
+    font-size: 0.72em; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #bbb; margin: 28px 0 10px 4px;
+  }
+
+/* GENERATOR */
+.generator-wrapper {
+display: flex;
+align-items: center;
+gap: 14px;
+margin-bottom: 32px;
+justify-content: center;
+}
+.generator-card {
+width: min(240px, 68vw);
+height: min(240px, 68vw);
+border-radius: 16px;
+overflow: hidden;
+position: relative;
+cursor: pointer;
+box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+flex-shrink: 0;
+}
+.generator-card img {
+width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.gen-play-overlay {
+position: absolute; top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+width: 52px; height: 52px;
+background: rgba(255,255,255,0.35);
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-size: 1.3em; color: white;
+pointer-events: none;
+}
+.gen-next-btn {
+background: #fff;
+border: 1.5px solid #ddd;
+color: #aaa;
+width: 42px;
+height: 42px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+font-size: 1.4em;
+padding: 0 0 2px 2px;
+flex-shrink: 0;
+}
+
+/* VOCAB ROW */
+.vocab-row {
+display: flex;
+align-items: center;
+gap: 12px;
+background: #fff;
+border-radius: 14px;
+padding: 10px 14px;
+margin-bottom: 10px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+}
+.thumb {
+width: 56px; height: 56px;
+border-radius: 8px; object-fit: cover;
+cursor: pointer; flex-shrink: 0;
+-webkit-user-select: none; user-select: none;
+}
+.words { flex: 1; line-height: 1.35; }
+.fr { font-weight: 600; font-size: 1.05em; }
+.th { color: #666; font-size: 0.95em; }
+.play-btn {
+background: #4a7c59; color: #fff; border: none;
+width: 40px; height: 40px; border-radius: 50%;
+font-size: 1em; flex-shrink: 0; cursor: pointer;
+display: flex; align-items: center; justify-content: center;
+}
+.play-btn:active { background: #38613f; }
+.double-play { display: flex; gap: 6px; flex-shrink: 0; }
+
+/* IMAGE OVERLAY */
+#img-overlay {
+display: none; position: fixed;
+top: 0; left: 0; width: 100%; height: 100%;
+background: rgba(0,0,0,0.75); z-index: 200;
+align-items: center; justify-content: center;
+}
+#overlay-img {
+width: 80vw; height: 80vw;
+max-width: 360px; max-height: 360px;
+object-fit: cover; border-radius: 16px;
+box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+</style>
+
+</head>
+<body>
+
+<h1>Vocabulaire #2 📖</h1>
+<p class="subtitle">Leçon 9 — Mercredi 22 Juillet 2026 — Krisp Cafe</p>
+
+<!-- IMAGE OVERLAY -->
+
+<div id="img-overlay" ontouchend="shrinkImg()" onmouseup="shrinkImg()">
+  <img id="overlay-img" src="" alt="">
+</div>
+
+<!-- GENERATOR -->
+
+<div class="generator-wrapper">
+  <div class="generator-card" onclick="genPlay()" ontouchstart="genPlay(); event.preventDefault();">
+    <img id="gen-img" src="../images/un-billet-d-avion.jpeg" alt="">
+    <div class="gen-play-overlay">▶</div>
+  </div>
+  <button class="gen-next-btn" onclick="genNext()">→</button>
+</div>
+<audio id="gen-audio" src="../audio/un-billet-d-avion.m4a"></audio>
+
+<!-- VOCABULARY LIST -->
+
+<p class="section-title">Vocabulaire</p>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-billet-d-avion.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un billet d'avion</div>
+    <div class="th">ตั๋วเครื่องบิน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-billet-d-avion').play()">▶</button>
+  <audio id="a-un-billet-d-avion" src="../audio/un-billet-d-avion.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-billet-de-cent.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un billet de cent</div>
+    <div class="th">แบงก์ร้อย</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-billet-de-cent').play()">▶</button>
+  <audio id="a-un-billet-de-cent" src="../audio/un-billet-de-cent.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-piece-de-deux.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une pièce de deux</div>
+    <div class="th">เหรียญสอง</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-piece-de-deux').play()">▶</button>
+  <audio id="a-une-piece-de-deux" src="../audio/une-piece-de-deux.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/de-l-argent.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">de l'argent / du fric</div>
+    <div class="th">เงิน / ตังค์</div>
+  </div>
+  <div class="double-play">
+    <button class="play-btn" onclick="document.getElementById('a-de-l-argent').play()">▶</button>
+    <button class="play-btn" onclick="document.getElementById('a-de-l-argent-2').play()">▶</button>
+  </div>
+  <audio id="a-de-l-argent" src="../audio/de-l-argent.m4a"></audio>
+  <audio id="a-de-l-argent-2" src="../audio/du-fric.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-carte.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une carte</div>
+    <div class="th">บัตร</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-carte').play()">▶</button>
+  <audio id="a-une-carte" src="../audio/une-carte.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-portefeuille.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un portefeuille</div>
+    <div class="th">กระเป๋าสตางค์</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-portefeuille').play()">▶</button>
+  <audio id="a-un-portefeuille" src="../audio/un-portefeuille.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/des-cles.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">des clés</div>
+    <div class="th">กุญแจ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-des-cles').play()">▶</button>
+  <audio id="a-des-cles" src="../audio/des-cles.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-bic.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un bic</div>
+    <div class="th">ปากกา</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-bic').play()">▶</button>
+  <audio id="a-un-bic" src="../audio/un-bic.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-livre.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un livre</div>
+    <div class="th">หนังสือ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-livre').play()">▶</button>
+  <audio id="a-un-livre" src="../audio/un-livre.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-portable.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un portable / un téléphone</div>
+    <div class="th">มือถือ / โทรศัพท์</div>
+  </div>
+  <div class="double-play">
+    <button class="play-btn" onclick="document.getElementById('a-un-portable').play()">▶</button>
+    <button class="play-btn" onclick="document.getElementById('a-un-portable-2').play()">▶</button>
+  </div>
+  <audio id="a-un-portable" src="../audio/un-portable.m4a"></audio>
+  <audio id="a-un-portable-2" src="../audio/un-telephone.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-tablette.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une tablette</div>
+    <div class="th">แท็บเล็ต</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-tablette').play()">▶</button>
+  <audio id="a-une-tablette" src="../audio/une-tablette.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-chargeur.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un chargeur</div>
+    <div class="th">สายชาร์จ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-chargeur').play()">▶</button>
+  <audio id="a-un-chargeur" src="../audio/un-chargeur.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-ordi.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un ordi</div>
+    <div class="th">คอม</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-ordi').play()">▶</button>
+  <audio id="a-un-ordi" src="../audio/un-ordi.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-tele.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une télé / une tévé</div>
+    <div class="th">ทีวี</div>
+  </div>
+  <div class="double-play">
+    <button class="play-btn" onclick="document.getElementById('a-une-tele').play()">▶</button>
+    <button class="play-btn" onclick="document.getElementById('a-une-tele-2').play()">▶</button>
+  </div>
+  <audio id="a-une-tele" src="../audio/une-tele.m4a"></audio>
+  <audio id="a-une-tele-2" src="../audio/une-teve.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-couteau.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un couteau</div>
+    <div class="th">มีด</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-couteau').play()">▶</button>
+  <audio id="a-un-couteau" src="../audio/un-couteau.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-fourchette.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une fourchette</div>
+    <div class="th">ส้อม</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-fourchette').play()">▶</button>
+  <audio id="a-une-fourchette" src="../audio/une-fourchette.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-cuillere.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une cuillère</div>
+    <div class="th">ช้อน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-cuillere').play()">▶</button>
+  <audio id="a-une-cuillere" src="../audio/une-cuillere.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-assiette.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une assiette</div>
+    <div class="th">จาน</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-assiette').play()">▶</button>
+  <audio id="a-une-assiette" src="../audio/une-assiette.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-verre-d-eau.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un verre d'eau</div>
+    <div class="th">น้ำหนึ่งแก้ว</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-verre-d-eau').play()">▶</button>
+  <audio id="a-un-verre-d-eau" src="../audio/un-verre-d-eau.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-bouteille-d-eau.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une bouteille d'eau</div>
+    <div class="th">น้ำหนึ่งขวด</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-bouteille-d-eau').play()">▶</button>
+  <audio id="a-une-bouteille-d-eau" src="../audio/une-bouteille-d-eau.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-chaise.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une chaise</div>
+    <div class="th">เก้าอี้</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-chaise').play()">▶</button>
+  <audio id="a-une-chaise" src="../audio/une-chaise.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-table.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une table</div>
+    <div class="th">โต๊ะ</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-table').play()">▶</button>
+  <audio id="a-une-table" src="../audio/une-table.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-frigo.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un frigo</div>
+    <div class="th">ตู้เย็น</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-frigo').play()">▶</button>
+  <audio id="a-un-frigo" src="../audio/un-frigo.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/des-lunettes.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">des lunettes</div>
+    <div class="th">แว่นตา</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-des-lunettes').play()">▶</button>
+  <audio id="a-des-lunettes" src="../audio/des-lunettes.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/des-chaussures.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">des chaussures</div>
+    <div class="th">รองเท้า</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-des-chaussures').play()">▶</button>
+  <audio id="a-des-chaussures" src="../audio/des-chaussures.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-veste.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une veste</div>
+    <div class="th">แจ็คเก็ต</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-veste').play()">▶</button>
+  <audio id="a-une-veste" src="../audio/une-veste.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-chapeau.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un chapeau</div>
+    <div class="th">หมวก</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-chapeau').play()">▶</button>
+  <audio id="a-un-chapeau" src="../audio/un-chapeau.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-casquette.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une casquette</div>
+    <div class="th">หมวกแก๊ป</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-casquette').play()">▶</button>
+  <audio id="a-une-casquette" src="../audio/une-casquette.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-parapluie.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un parapluie</div>
+    <div class="th">ร่ม</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-parapluie').play()">▶</button>
+  <audio id="a-un-parapluie" src="../audio/un-parapluie.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-sac.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un sac</div>
+    <div class="th">กระเป๋า</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-sac').play()">▶</button>
+  <audio id="a-un-sac" src="../audio/un-sac.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/un-sac-a-dos.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">un sac à dos</div>
+    <div class="th">กระเป๋าเป้</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-un-sac-a-dos').play()">▶</button>
+  <audio id="a-un-sac-a-dos" src="../audio/un-sac-a-dos.m4a"></audio>
+</div>
+
+<div class="vocab-row">
+  <img class="thumb" src="../images/une-valise.jpeg" ontouchstart="expandImg(event,this)" onmousedown="expandImg(event,this)">
+  <div class="words">
+    <div class="fr">une valise</div>
+    <div class="th">กระเป๋าเดินทาง</div>
+  </div>
+  <button class="play-btn" onclick="document.getElementById('a-une-valise').play()">▶</button>
+  <audio id="a-une-valise" src="../audio/une-valise.m4a"></audio>
+</div>
+
+<script>
+const vocabData = [
+  { key: "un-billet-d-avion", fr: "un billet d'avion", th: "ตั๋วเครื่องบิน", images: ["un-billet-d-avion"], audio: ["un-billet-d-avion"] },
+  { key: "un-billet-de-cent", fr: "un billet de cent", th: "แบงก์ร้อย", images: ["un-billet-de-cent"], audio: ["un-billet-de-cent"] },
+  { key: "une-piece-de-deux", fr: "une pièce de deux", th: "เหรียญสอง", images: ["une-piece-de-deux"], audio: ["une-piece-de-deux"] },
+  { key: "de-l-argent", fr: "de l'argent / du fric", th: "เงิน / ตังค์", images: ["de-l-argent", "de-l-argent-2", "de-l-argent-3"], audio: ["de-l-argent", "du-fric"] },
+  { key: "une-carte", fr: "une carte", th: "บัตร", images: ["une-carte", "une-carte-2"], audio: ["une-carte"] },
+  { key: "un-portefeuille", fr: "un portefeuille", th: "กระเป๋าสตางค์", images: ["un-portefeuille"], audio: ["un-portefeuille"] },
+  { key: "des-cles", fr: "des clés", th: "กุญแจ", images: ["des-cles", "des-cles-2"], audio: ["des-cles"] },
+  { key: "un-bic", fr: "un bic", th: "ปากกา", images: ["un-bic", "un-bic-2"], audio: ["un-bic"] },
+  { key: "un-livre", fr: "un livre", th: "หนังสือ", images: ["un-livre", "un-livre-2"], audio: ["un-livre"] },
+  { key: "un-portable", fr: "un portable / un téléphone", th: "มือถือ / โทรศัพท์", images: ["un-portable", "un-portable-2"], audio: ["un-portable", "un-telephone"] },
+  { key: "une-tablette", fr: "une tablette", th: "แท็บเล็ต", images: ["une-tablette"], audio: ["une-tablette"] },
+  { key: "un-chargeur", fr: "un chargeur", th: "สายชาร์จ", images: ["un-chargeur"], audio: ["un-chargeur"] },
+  { key: "un-ordi", fr: "un ordi", th: "คอม", images: ["un-ordi", "un-ordi-2", "un-ordi-3"], audio: ["un-ordi"] },
+  { key: "une-tele", fr: "une télé / une tévé", th: "ทีวี", images: ["une-tele", "une-tele-2"], audio: ["une-tele", "une-teve"] },
+  { key: "un-couteau", fr: "un couteau", th: "มีด", images: ["un-couteau"], audio: ["un-couteau"] },
+  { key: "une-fourchette", fr: "une fourchette", th: "ส้อม", images: ["une-fourchette"], audio: ["une-fourchette"] },
+  { key: "une-cuillere", fr: "une cuillère", th: "ช้อน", images: ["une-cuillere"], audio: ["une-cuillere"] },
+  { key: "une-assiette", fr: "une assiette", th: "จาน", images: ["une-assiette", "une-assiette-2"], audio: ["une-assiette"] },
+  { key: "un-verre-d-eau", fr: "un verre d'eau", th: "น้ำหนึ่งแก้ว", images: ["un-verre-d-eau", "un-verre-d-eau-2"], audio: ["un-verre-d-eau"] },
+  { key: "une-bouteille-d-eau", fr: "une bouteille d'eau", th: "น้ำหนึ่งขวด", images: ["une-bouteille-d-eau", "une-bouteille-d-eau-2", "une-bouteille-d-eau-3"], audio: ["une-bouteille-d-eau"] },
+  { key: "une-chaise", fr: "une chaise", th: "เก้าอี้", images: ["une-chaise", "une-chaise-2"], audio: ["une-chaise"] },
+  { key: "une-table", fr: "une table", th: "โต๊ะ", images: ["une-table"], audio: ["une-table"] },
+  { key: "un-frigo", fr: "un frigo", th: "ตู้เย็น", images: ["un-frigo", "un-frigo-2"], audio: ["un-frigo"] },
+  { key: "des-lunettes", fr: "des lunettes", th: "แว่นตา", images: ["des-lunettes", "des-lunettes-2", "des-lunettes-3", "des-lunettes-4", "des-lunettes-5"], audio: ["des-lunettes"] },
+  { key: "des-chaussures", fr: "des chaussures", th: "รองเท้า", images: ["des-chaussures", "des-chaussures-2", "des-chaussures-3"], audio: ["des-chaussures"] },
+  { key: "une-veste", fr: "une veste", th: "แจ็คเก็ต", images: ["une-veste", "une-veste-2", "une-veste-3", "une-veste-4", "une-veste-5", "une-veste-6", "une-veste-7"], audio: ["une-veste"] },
+  { key: "un-chapeau", fr: "un chapeau", th: "หมวก", images: ["un-chapeau", "un-chapeau-2", "un-chapeau-3", "un-chapeau-4"], audio: ["un-chapeau"] },
+  { key: "une-casquette", fr: "une casquette", th: "หมวกแก๊ป", images: ["une-casquette", "une-casquette-2"], audio: ["une-casquette"] },
+  { key: "un-parapluie", fr: "un parapluie", th: "ร่ม", images: ["un-parapluie"], audio: ["un-parapluie"] },
+  { key: "un-sac", fr: "un sac", th: "กระเป๋า", images: ["un-sac", "un-sac-2"], audio: ["un-sac"] },
+  { key: "un-sac-a-dos", fr: "un sac à dos", th: "กระเป๋าเป้", images: ["un-sac-a-dos", "un-sac-a-dos-2", "un-sac-a-dos-3"], audio: ["un-sac-a-dos"] },
+  { key: "une-valise", fr: "une valise", th: "กระเป๋าเดินทาง", images: ["une-valise", "une-valise-2"], audio: ["une-valise"] },
+];
+
+let lastWordIdx = -1;
+const lastImgIdxMap = {};
+let currentAudioList = ["un-billet-d-avion"];
+let audioToggle = 0;
+
+function genNext() {
+  let idx;
+  const n = vocabData.length;
+  if (n === 1) { idx = 0; }
+  else {
+    do { idx = Math.floor(Math.random() * n); } while (idx === lastWordIdx);
+  }
+  lastWordIdx = idx;
+  const word = vocabData[idx];
+
+  let imgIdx = 0;
+  if (word.images.length > 1) {
+    const lastImg = lastImgIdxMap[word.key] !== undefined ? lastImgIdxMap[word.key] : -1;
+    do { imgIdx = Math.floor(Math.random() * word.images.length); } while (imgIdx === lastImg);
+    lastImgIdxMap[word.key] = imgIdx;
+  }
+
+  document.getElementById('gen-img').src = `../images/${word.images[imgIdx]}.jpeg`;
+  const genAudio = document.getElementById('gen-audio');
+  currentAudioList = word.audio;
+  audioToggle = 0;
+  genAudio.src = `../audio/${word.audio[0]}.m4a`;
+}
+
+function genPlay() {
+  const genAudio = document.getElementById('gen-audio');
+
+  // Si le mot a deux prononciations, on alterne à chaque appui
+  if (currentAudioList.length === 2) {
+    const file = currentAudioList[audioToggle];
+    genAudio.src = `../audio/${file}.m4a`;
+    audioToggle = audioToggle === 0 ? 1 : 0;
+  }
+
+  genAudio.currentTime = 0;
+  genAudio.play();
+}
+
+function expandImg(e, img) {
+  e.preventDefault();
+  document.getElementById('overlay-img').src = img.src;
+  document.getElementById('img-overlay').style.display = 'flex';
+}
+
+function shrinkImg() {
+  document.getElementById('img-overlay').style.display = 'none';
+}
+
+// Init generator on load
+window.addEventListener('load', genNext);
+</script>
+
+</body>
+</html>
