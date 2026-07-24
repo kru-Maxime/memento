@@ -27,9 +27,10 @@
 .generator-wrapper {
 display: flex;
 align-items: center;
+justify-content: center;
 gap: 14px;
 margin-bottom: 32px;
-justify-content: center;
+width: 100%;
 }
 .generator-card {
 width: min(240px, 68vw);
@@ -68,7 +69,6 @@ cursor: pointer;
 font-size: 1.4em;
 padding: 0 0 2px 2px;
 flex-shrink: 0;
-margin-left: auto; /* Correction pour centrer l'ensemble */
 }
 
 /* VOCAB ROW */
@@ -553,29 +553,4 @@ function genPlay() {
       genAudio.src = '../audio/un-mec.m4a';
       mecToggle = 1;
     } else {
-      genAudio.src = '../audio/un-type.m4a';
-      mecToggle = 0;
-    }
-  }
-  // Si ce n'est pas "un-mec", on garde le fichier audio déjà défini par genNext()
-  
-  genAudio.currentTime = 0;
-  genAudio.play();
-}
-
-function expandImg(e, img) {
-  e.preventDefault();
-  document.getElementById('overlay-img').src = img.src;
-  document.getElementById('img-overlay').style.display = 'flex';
-}
-
-function shrinkImg() {
-  document.getElementById('img-overlay').style.display = 'none';
-}
-
-// Init generator on load
-window.addEventListener('load', genNext);
-</script>
-
-</body>
-</html>
+      genAudio.src = '../audio/un-type.m4a
